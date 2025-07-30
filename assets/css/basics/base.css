@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-size: var(--font-size);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1,
