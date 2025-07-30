@@ -10,4 +10,13 @@
     --gray1: #aaa;
     --gray2: #888;
     --gray3: #333;
+
+
+    /* mail */
+    --color-bg-1: #E9EEF6;
+    --color-bg: #F8FAFD;
+
+
+    --font-size: 14px;
+    --line-height: 20px;
 }

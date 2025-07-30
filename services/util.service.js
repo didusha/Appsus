@@ -7,7 +7,12 @@ export const utilService = {
     getDayName,
     getMonthName,
     loadFromStorage,
-    saveToStorage
+    saveToStorage,
+    getTruthyValues,
+    debounce,
+    animateCSS,
+    formatMailDate,
+    getSenderName
 }
 
 function saveToStorage(key, val) {
@@ -70,4 +75,67 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+function getTruthyValues(obj) {
+    const newObj = {}
+    for (const key in obj) {
+        const value = obj[key]
+        if (value) {
+            newObj[key] = value
+        }
+    }
+    return newObj
+}
+
+function animateCSS(el, animation = 'bounce', options = {}) {
+    const prefix = 'animate__'
+    const { isRemoveAnimation = true } = options
+    return new Promise((resolve, reject) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+
+        function handleAnimationEnd(event) {
+            event.stopPropagation()
+            if (isRemoveAnimation) el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+    })
+}
+
+function debounce(func, delay) {
+    let timeoutId
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(() => {
+            func(...args)
+        }, delay)
+    }
+}
+
+function formatMailDate(timestamp) {
+    const date = new Date(timestamp)
+    const now = new Date()
+
+    const diffInMs = now - date
+    const oneYearInMs = 1000 * 60 * 60 * 24 * 365
+
+    if (diffInMs > oneYearInMs) {
+        return date.getFullYear().toString()
+    } else {
+        return date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+        })
+    }
+}
+
+function getSenderName(email) {
+    if (!email) return '';
+
+    const name = email.split('@')[0];
+
+    return name.charAt(0).toUpperCase() + name.slice(1);
 }
