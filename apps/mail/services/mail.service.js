@@ -14,6 +14,8 @@ export const mailService = {
     getFilterFromSearchParams
 }
 
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
+
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
@@ -142,12 +144,6 @@ function _createMails() {
     }
 }
 
-function _createMail() {
-    const mail = getEmptyMail()
-    mail.id = utilService.makeId()
-    return mail
-}
-
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     // const minCreatedAt = searchParams.get('minCreatedAt') || ''
@@ -168,24 +164,21 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-function readMail(mailId) {
-    get(mailId)
-        .then(prevMails => prevMails.isRead = true)
-}
-
-
-const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
-const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
-
-
-
-function _createMail(subject, createdat = 250) {
-    const mail = getEmptyMail(subject, createdat)
-    mail.id = utilService.makeId()
-    return mail
-}
-
-
 function getEmptyMail(subject = '', createdAt = '') {
     return { subject, createdAt }
 }
+
+
+// const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
+
+// function _createMail(subject, createdat = 250) {
+//     const mail = getEmptyMail(subject, createdat)
+//     mail.id = utilService.makeId()
+//     return mail
+// }
+
+// function _createMail() {
+//     const mail = getEmptyMail()
+//     mail.id = utilService.makeId()
+//     return mail
+// }

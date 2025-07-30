@@ -14,6 +14,7 @@ const { Link, Outlet, useSearchParams } = ReactRouterDOM
 export function MailIndex() {
 
     const [mails, setMails] = useState(null)
+    const [unReadMails, setUnReadMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
 
@@ -24,10 +25,13 @@ export function MailIndex() {
 
     function loadMails() {
         mailService.query(filterBy)
-            .then(mails => setMails(mails))
+            .then(mails => {
+                setMails(mails)
+                setUnReadMails(mails.filter(mail => !mail.isRead).length)
+            })
             .catch(err => {
                 console.log("err:", err)
-                showErrorMsg("Cannot get mails!")
+                showErrorMsg("Cannot get mails")
             })
     }
 
@@ -38,8 +42,8 @@ export function MailIndex() {
                 showSuccessMsg(`Mail (${mailId}) removed successfully!`)
             })
             .catch(err => {
-                console.log("Problem removing mail:", err)
-                showErrorMsg("Problem removing mail!")
+                console.log("Cannot get mail:", err)
+                showErrorMsg("Cannot get mail")
             })
     }
 
@@ -51,10 +55,17 @@ export function MailIndex() {
         setMails([...mails, newMail])
     }
 
-    // function onReadMail(mailId) {
-    //     mailService.readMail(mailId)
-    // }
-
+    function onReadMail(mailId, isRead) {
+        mailService.get(mailId)
+            .then(prevMail => {
+                const updatedMail = { ...prevMail, ...isRead }
+                return mailService.save(updatedMail)
+            })
+            .then(() => loadMails())
+            .catch(err => {
+                console.error('Error updating mail:', err)
+            })
+    }
 
     if (!mails) return <div className="loader">Loading...</div>
     return (
@@ -62,11 +73,10 @@ export function MailIndex() {
             <section className="">
                 <Link className="btn-add-mail" to="/mail/edit" >Compose</Link>
             </section>
+            <div><i className="fa-regular fa-envelope"></i>{unReadMails}</div>
             <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList onRemoveMail={onRemoveMail}  mails={mails} />
+            <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
             <Outlet context={{ sentMail }} />
         </section>
     )
 }
-
-{/* {isNewMail && <MailEdit />} onReadMail={onReadMail}*/   }
