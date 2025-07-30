@@ -3,6 +3,7 @@
     justify-content: space-between;
     padding: 1em;
     background: var(--bg1);
+    margin-bottom: .625rem;
 }
 
 nav a {

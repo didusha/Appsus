@@ -1,13 +1,22 @@
-
+/* Bsic */
 @import './basics/vars.css';
 @import './basics/base.css';
 @import './basics/helpers.css';
 @import './basics/layout.css';
 
+/* Components */
 @import './cmps/Home.css';
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 
+/* Pages */
 @import './apps/note/NoteIndex.css';
 @import './apps/mail/MailIndex.css';
 @import './apps/mail/MailList.css';
+
+/* Mail components */
+@import '../css/apps/mail/MailFilter.css';
+@import '../css/apps/mail/MailDetails.css';
+@import '../css/apps/mail/MailIndex.css';
+@import '../css/apps/mail/MailList.css';
+@import '../css/apps/mail/MailPreview.css';

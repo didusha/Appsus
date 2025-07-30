@@ -1,1 +1,18 @@
  /* mail index  */
+ .mail-index {
+    font-size: var(--font-size);
+ }
+
+ .btn-add-mail {
+    background-color: #c2e7ff;
+    width: max-content;
+    border-radius: 10px;
+    padding: 10px
+ }
+
+ .btn-add-mail::before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f304";
+    font-weight: 900;
+    margin-right: 0.5rem;
+ }

@@ -1,1 +1,19 @@
  /* mail list */
+
+ .mail-list {
+    
+ }
+
+ .mail-item {
+     /* background-color: palevioletred; */
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     border-bottom: 1px solid #eee;
+     cursor: pointer;
+ }
+
+ .mail-item:hover {
+     background-color: #f5f5f5;
+ }
+ 
