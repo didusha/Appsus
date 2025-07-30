@@ -84,32 +84,32 @@ function _createNotes() {
                     txt: 'Fullstack Me Baby!2'
                 }
             },
-            // {
-            //     id: utilService.makeId(),
-            //     createdAt: 1112223,
-            //     type: 'NoteImg',
-            //     isPinned: false,
-            //     info: {
-            //         url: 'http://some-img/me',
-            //         title: 'Bobi and Me'
-            //     },
-            //     style: {
-            //         backgroundColor: '#00d'
-            //     }
-            // },
-            // {
-            //     id: utilService.makeId(),
-            //     createdAt: 1112224,
-            //     type: 'NoteTodos',
-            //     isPinned: false,
-            //     info: {
-            //         title: 'Get my stuff together',
-            //         todos: [
-            //             { txt: 'Driving license', doneAt: null },
-            //             { txt: 'Coding power', doneAt: 187111111 }
-            //         ]
-            //     }
-            // }
+            {
+                id: utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'http://some-img/me',
+                    title: 'Bobi and Me'
+                },
+                style: {
+                    backgroundColor: '#00d'
+                }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112224,
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Get my stuff together',
+                    todos: [
+                        { txt: 'Driving license', doneAt: null },
+                        { txt: 'Coding power', doneAt: 187111111 }
+                    ]
+                }
+            }
         ]
         
         utilService.saveToStorage(NOTE_KEY, notes)
