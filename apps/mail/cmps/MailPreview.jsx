@@ -2,10 +2,10 @@ import { utilService } from "../../../services/util.service.js"
 
 export function MailPreview({ mail }) {
 
-    const { subject, from, createdAt, body } = mail
+    const { subject, to, createdAt, body } = mail
     return (
         <div>
-            <span className="from">{utilService.showtSenderName(from)}</span>
+            <span className="from">{utilService.showtSenderName(to)}</span>
             <div className="mail-content">
                 <span className="subject">{subject}</span>
                 <span className="body">{body}</span>

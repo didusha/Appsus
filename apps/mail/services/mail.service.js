@@ -42,6 +42,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
+        mail.sentAt= new Date()
         return storageService.post(MAIL_KEY, mail)
     }
 }

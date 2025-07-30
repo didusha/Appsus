@@ -1,6 +1,7 @@
  /* mail index  */
  .mail-index {
     font-size: var(--font-size);
+    /* position: relative; */
  }
 
  .btn-add-mail {

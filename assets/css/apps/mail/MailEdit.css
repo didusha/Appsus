@@ -1,0 +1,32 @@
+.mail-edit {
+    position: absolute;
+    bottom: 0;
+    right: 0 ;
+    z-index: 1;
+
+    background-color: var(--color-bg);
+    background-color: pink;
+    border: 1px solid black
+}
+
+.mail-edit form { 
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+    width: 400px;
+    gap: 10px;
+    /* margin-block-start: 20px; */
+} 
+/* 
+.mail-edit form input {
+    width: 200px;
+}
+
+.mail-edit form button {
+    justify-self: center;
+    grid-column: 1/-1;
+}
+
+.mail-edit h2 {
+    margin-block-end: 20px;
+} */

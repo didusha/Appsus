@@ -1,5 +1,5 @@
 const { Route, Routes } = ReactRouterDOM
-const Router = ReactRouterDOM.HashRouter
+const  Router  = ReactRouterDOM.HashRouter
 
 import { AppHeader } from './cmps/AppHeader.jsx'
 import { UserMsg } from './cmps/UserMsg.jsx'
@@ -7,6 +7,7 @@ import { About } from './pages/About.jsx'
 import { Home } from './pages/Home.jsx'
 import { MailIndex } from './apps/mail/pages/MailIndex.jsx'
 import { NoteIndex } from './apps/note/pages/NoteIndex.jsx'
+import { MailEdit } from './apps/mail/cmps/MailEdit.jsx'
 
 export function RootCmp() {
     return <Router>
@@ -15,7 +16,9 @@ export function RootCmp() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/mail" element={<MailIndex />} />
+                <Route path="/mail" element={<MailIndex />} >
+                    <Route path="/mail/edit" element={<MailEdit />} />
+                </Route>
                 <Route path="/note" element={<NoteIndex />} />
             </Routes>
             <UserMsg />

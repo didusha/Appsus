@@ -1,8 +1,6 @@
  /* mail list */
-
- .mail-list {
-    
- }
+/* 
+ .mail-list {} */
 
  .mail-item {
      /* background-color: palevioletred; */
@@ -15,5 +13,10 @@
 
  .mail-item:hover {
      background-color: #f5f5f5;
+ }
+
+ .mail-content{
+    display: flex;
+    justify-content: space-between;
  }
  
