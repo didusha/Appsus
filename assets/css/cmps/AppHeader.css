@@ -1,9 +1,14 @@
 .app-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1em;
     background: var(--bg1);
     margin-bottom: .625rem;
+}
+
+.logo{
+    font-size: 2em;
 }
 
 nav a {
@@ -14,4 +19,28 @@ nav a.active {
     color: var(--color1);
     font-weight: bold;
     text-decoration: overline;
+}
+
+.a {
+    color: rgb(77, 124, 232);
+}
+
+.p1 {
+    color: rgb(215, 52, 52);
+}
+
+.p2 {
+    color: rgb(250, 227, 55);
+}
+
+.s1 {
+    color: rgb(77, 124, 232);
+}
+
+.u {
+    color: rgb(56, 158, 56);
+}
+
+.s2 {
+    color: rgb(215, 52, 52);
 }
