@@ -1,5 +1,6 @@
 import { NoteList } from "../cmps/NoteList.jsx";
 import { noteService } from "../services/note.service.js";
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState, useEffect } = React
 
@@ -25,17 +26,15 @@ export function NoteIndex() {
 
 
     function onRemoveNote(noteId) {
-        // noteService.remove(noteId)
-        //     .then(() => {
-        //         setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
-        //         showSuccessMsg(`Note (${noteId}) removed successfully!`)
-        //     })
-        //     .catch(err => {
-        //         console.log('Problem removing note:', err)
-        //         showErrorMsg('Problem removing note!')
-        //     })
-        console.log('removed!');
-
+        noteService.remove(noteId)
+            .then(() => {
+                setNotes((prevNotes) => prevNotes.filter(note => note.id !== noteId))
+                showSuccessMsg(`Note (${noteId}) removed successfully!`)
+            })
+            .catch(err => {
+                console.log('Problem removing note:', err)
+                showErrorMsg('Problem removing note!')
+            })
     }
 
     if(!notes) return <div>loading...</div>

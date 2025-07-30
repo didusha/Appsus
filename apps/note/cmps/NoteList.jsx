@@ -6,11 +6,11 @@ const { useState } = React
 export function NoteList({ notes, onRemoveNote }) {
 
     return (
-        <ul>
+        <ul className="notes-list">
             {notes.map(note => (
-                <li key={note.id}>
+                <li className="note" key={note.id}>
                     <DynamicCmp cmpType={note.type} note={note} />
-                    <button onClick={onRemoveNote}>x</button>
+                    <button onClick={() => onRemoveNote(note.id)}>x</button>
                 </li>
             ))}
         </ul>
