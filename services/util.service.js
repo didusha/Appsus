@@ -12,7 +12,7 @@ export const utilService = {
     debounce,
     animateCSS,
     formatMailDate,
-    getSenderName
+    showtSenderName
 }
 
 function saveToStorage(key, val) {
@@ -117,25 +117,18 @@ function debounce(func, delay) {
 
 function formatMailDate(timestamp) {
     const date = new Date(timestamp)
-    const now = new Date()
 
-    const diffInMs = now - date
+    const diffInMs = new Date() - date  
     const oneYearInMs = 1000 * 60 * 60 * 24 * 365
-
     if (diffInMs > oneYearInMs) {
         return date.getFullYear().toString()
     } else {
-        return date.toLocaleDateString('en-US', {
-            month: 'short',
-            day: 'numeric',
-        })
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric'})
     }
 }
 
-function getSenderName(email) {
-    if (!email) return '';
-
-    const name = email.split('@')[0];
-
+function showtSenderName(mail) {
+    // if (!mail) return ''
+    const name = mail.split('@')[0];
     return name.charAt(0).toUpperCase() + name.slice(1);
 }

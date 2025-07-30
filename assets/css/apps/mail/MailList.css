@@ -7,7 +7,6 @@
  .mail-item {
      /* background-color: palevioletred; */
      display: flex;
-     justify-content: space-between;
      border-bottom: 1px solid #eee;
      cursor: pointer;
  }
@@ -15,37 +14,4 @@
  .mail-item:hover {
      background-color: #f5f5f5;
  }
-
- .mail-item.unread {
-     font-weight: bold;
-     background-color: #fff;
- }
-
-  .mail-item .from {
-     flex: 1;
-     color: #333;
- } 
-
-  .mail-item .content {
-     flex: 3;
-     padding-left: 12px;
-     overflow: hidden;
- } 
-
- .mail-item .subject {
-     color: #222;
-     margin-right: 4px;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     display: inline-block;
- }
-
- .mail-item .body {
-     color: #666;
-     white-space: nowrap;
-     overflow: hidden;
-     text-overflow: ellipsis;
-     display: inline-block;
- } 
-
+ 
