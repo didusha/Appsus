@@ -8,7 +8,7 @@ import { utilService } from "../../../services/util.service.js"
 
 
 const { useState, useEffect } = React
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, Outlet, useSearchParams } = ReactRouterDOM
 
 
 export function MailIndex() {
@@ -47,16 +47,26 @@ export function MailIndex() {
         setFilterBy({ ...filterByToEdit })
     }
 
+    function sentMail(newMail) {
+        setMails([...mails, newMail])
+    }
+
+    function onReadMail(mailId) {
+        mailService.readMail(mailId)
+    }
+
 
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
-            <section className="btn-add-mail">
-                <Link to="/mail/edit">Compose</Link>
+            <section className="">
+                <Link className="btn-add-mail" to="/mail/edit" >Compose</Link>
             </section>
             <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList onRemoveMail={onRemoveMail} mails={mails} />
+            <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
+            <Outlet context={{ sentMail }} />
         </section>
     )
 }
 
+{/* {isNewMail && <MailEdit />} */ }
