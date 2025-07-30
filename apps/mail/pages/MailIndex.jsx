@@ -47,24 +47,26 @@ export function MailIndex() {
         setFilterBy({ ...filterByToEdit })
     }
 
-    function sentMail(newMail){
+    function sentMail(newMail) {
         setMails([...mails, newMail])
     }
 
-    
+    function onReadMail(mailId) {
+        mailService.readMail(mailId)
+    }
+
 
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
             <section className="">
-                {/* <button className="btn-add-mail" >Compose</button> */}
                 <Link className="btn-add-mail" to="/mail/edit" >Compose</Link>
             </section>
             <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList onRemoveMail={onRemoveMail} mails={mails} />
-            <Outlet context={{sentMail}}/>
+            <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
+            <Outlet context={{ sentMail }} />
         </section>
     )
 }
 
-            {/* {isNewMail && <MailEdit />} */}
+{/* {isNewMail && <MailEdit />} */ }

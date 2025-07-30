@@ -9,6 +9,11 @@
     border: 1px solid black
 }
 
+.mail-edit-header{
+    display: flex;
+    justify-content: space-between;
+}
+
 .mail-edit form { 
     display: grid;
     grid-template-columns: 1fr;

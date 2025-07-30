@@ -19,4 +19,9 @@
     display: flex;
     justify-content: space-between;
  }
- 
+
+.mail-item.read {
+  background-color: white;
+  font-weight: normal;
+  color: #5f6368; 
+}

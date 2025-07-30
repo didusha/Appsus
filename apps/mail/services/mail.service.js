@@ -19,7 +19,7 @@ function query(filterBy = {}) {
         .then(mails => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.body) )
+                mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.body))
             }
             // if (filterBy.minCreatedAt) {
             //     mails = mails.filter(mail => mail.createdAt >= filterBy.minCreatedAt)
@@ -30,7 +30,8 @@ function query(filterBy = {}) {
 }
 
 function get(mailId) {
-    return storageService.get(MAIL_KEY, mailId).then(_setNextPrevMailId)
+    return storageService.get(MAIL_KEY, mailId)
+        .then(_setNextPrevMailId)
 }
 
 function remove(mailId) {
@@ -42,7 +43,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail.sentAt= new Date()
+        mail.sentAt = new Date()
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -167,19 +168,24 @@ function _setNextPrevMailId(mail) {
     })
 }
 
+function readMail(mailId) {
+    get(mailId)
+        .then(prevMails => prevMails.isRead = true)
+}
+
 
 const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 
 
 
-// function _createMail(subject, createdat = 250) {
-//     const mail = getEmptyMail(subject, createdat)
-//     mail.id = utilService.makeId()
-//     return mail
-// }
+function _createMail(subject, createdat = 250) {
+    const mail = getEmptyMail(subject, createdat)
+    mail.id = utilService.makeId()
+    return mail
+}
 
 
-// function getEmptyMail(subject = '', createdAt = '') {
-//     return { subject, createdAt }
-// }
+function getEmptyMail(subject = '', createdAt = '') {
+    return { subject, createdAt }
+}
