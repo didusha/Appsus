@@ -13,7 +13,7 @@ const { Link, useSearchParams } = ReactRouterDOM
 
 export function MailIndex() {
 
- const [mails, setMails] = useState(null)
+    const [mails, setMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
 
@@ -50,15 +50,13 @@ export function MailIndex() {
 
     if (!mails) return <div className="loader">Loading...</div>
     return (
-    <section className="mail-index">
-              {/* <MailFilter /> */}
-              <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-
-            {/* <section style={{ marginTop: "10px" }} className="container">
-                <Link to="/mail/edit">Add Mail</Link>
-            </section> */}
+        <section className="mail-index">
+            <section className="btn-add-mail">
+                <Link to="/mail/edit">Compose</Link>
+            </section>
+            <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <MailList onRemoveMail={onRemoveMail} mails={mails} />
-    </section>
+        </section>
     )
 }
 
