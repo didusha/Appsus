@@ -100,7 +100,7 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
-                    url: 'http://some-img/me',
+                    url: 'https://i0.wp.com/observer.ug/wp-content/uploads/2020/09/Bobi-Wine-and-Barbie-Share-First-Joint-Magazine-Cover.jpg?fit=760%2C546&ssl=1',
                     title: 'Bobi and Me'
                 },
                 style: {

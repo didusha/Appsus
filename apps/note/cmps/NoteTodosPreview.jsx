@@ -3,9 +3,14 @@
 
 export function NoteTodosPreview({ note }) {
 
+
+
     return (
         <article className="note-todos-preview">
-            <h2>{note.info.title}</h2>
+            <ul className="todo-title">{note.info.title}</ul>
+            {note.info.todos.map((todo,idx) => 
+                <li key={idx}>{todo.txt}</li>
+            )}
         </article>
     )
 }
