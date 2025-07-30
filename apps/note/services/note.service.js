@@ -9,7 +9,7 @@ export const noteService = {
     get,
     remove,
     save,
-    getEmptyNote,
+    createNote,
     getDefaultFilter,
     getFilterFromSearchParams
 }
@@ -46,8 +46,18 @@ function save(note) {
     }
 }
 
-function getEmptyNote(vendor = '', speed = '') {
-    return { vendor, speed }
+function createNote(txt = '', type = 'NoteTxt') {
+    return  {
+                createdAt: Date.now(),
+                type,
+                isPinned: true,
+                style: {
+                    backgroundColor: 'white'
+                },
+                info: {
+                    txt
+                }
+            }
 }
 
 function getDefaultFilter() {

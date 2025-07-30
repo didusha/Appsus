@@ -1,1 +1,4 @@
- /* note index */
+.notes-index{
+    height: 100vh;
+    position: relative;
+}

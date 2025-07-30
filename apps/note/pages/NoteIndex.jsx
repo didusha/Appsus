@@ -1,15 +1,17 @@
 import { NoteList } from "../cmps/NoteList.jsx";
 import { noteService } from "../services/note.service.js";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
+import { NoteEdit } from "../cmps/NoteEdit.jsx"
+import { NoteAdd } from "../cmps/NoteAdd.jsx";
+
 
 const { useState, useEffect } = React
-
 
 
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
-
+    const [isNoteEdit, setIsNoteEdit] = useState(false)
 
     useEffect(() => {
         loadNotes()
@@ -24,7 +26,6 @@ export function NoteIndex() {
             })
     }
 
-
     function onRemoveNote(noteId) {
         noteService.remove(noteId)
             .then(() => {
@@ -37,10 +38,16 @@ export function NoteIndex() {
             })
     }
 
-    if(!notes) return <div>loading...</div>
+    function onSaveNote(newNote){
+        setNotes([...notes,newNote])
+    }
+
+    if (!notes) return <div>loading...</div>
     return (
         <section className="notes-index">
-            <NoteList onRemoveNote={onRemoveNote} notes={notes} />
+            {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} />}
+            <NoteAdd onSaveNote={onSaveNote}/>
+            <NoteList onRemoveNote={onRemoveNote} notes={notes} setIsNoteEdit={setIsNoteEdit} />
         </section>
     )
 }

@@ -3,17 +3,24 @@ import { NoteImgPreview } from "./NoteImgPreview.jsx"
 import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote }) {
+export function NoteList({ notes, onRemoveNote, setIsNoteEdit }) {
+
+
+
 
     return (
-        <ul className="notes-list">
-            {notes.map(note => (
-                <li className="note" key={note.id}>
-                    <DynamicCmp cmpType={note.type} note={note} />
-                    <button onClick={() => onRemoveNote(note.id)}>x</button>
-                </li>
-            ))}
-        </ul>
+        <section >
+            <ul className="notes-list">
+                {notes.map(note => (
+                    <li className="note" key={note.id} >
+                        <div onClick={() => setIsNoteEdit(true)}>
+                            <DynamicCmp cmpType={note.type} note={note} />
+                        </div>
+                        <button onClick={() => onRemoveNote(note.id)}>x</button>
+                    </li>
+                ))}
+            </ul>
+        </section>
     )
 }
 
