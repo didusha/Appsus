@@ -51,9 +51,9 @@ export function MailIndex() {
         setMails([...mails, newMail])
     }
 
-    function onReadMail(mailId) {
-        mailService.readMail(mailId)
-    }
+    // function onReadMail(mailId) {
+    //     mailService.readMail(mailId)
+    // }
 
 
     if (!mails) return <div className="loader">Loading...</div>
@@ -63,10 +63,10 @@ export function MailIndex() {
                 <Link className="btn-add-mail" to="/mail/edit" >Compose</Link>
             </section>
             <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
+            <MailList onRemoveMail={onRemoveMail}  mails={mails} />
             <Outlet context={{ sentMail }} />
         </section>
     )
 }
 
-{/* {isNewMail && <MailEdit />} */ }
+{/* {isNewMail && <MailEdit />} onReadMail={onReadMail}*/   }

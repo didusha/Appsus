@@ -47,17 +47,17 @@ function save(note) {
 }
 
 function createNote(txt = '', type = 'NoteTxt') {
-    return  {
-                createdAt: Date.now(),
-                type,
-                isPinned: true,
-                style: {
-                    backgroundColor: 'white'
-                },
-                info: {
-                    txt
-                }
-            }
+    return {
+        createdAt: Date.now(),
+        type,
+        isPinned: true,
+        style: {
+            backgroundColor: 'white'
+        },
+        info: {
+            txt
+        }
+    }
 }
 
 function getDefaultFilter() {
@@ -121,7 +121,7 @@ function _createNotes() {
                 }
             }
         ]
-        
+
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
