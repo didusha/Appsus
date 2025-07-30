@@ -22,3 +22,7 @@
 @import '../css/apps/mail/MailList.css';
 @import '../css/apps/mail/MailPreview.css';
 @import '../css/apps/mail/MailEdit.css';
+
+/* Notes componanets */
+@import '../css/apps/note/NoteEdit.css';
+@import '../css/apps/note/NoteAdd.css';
