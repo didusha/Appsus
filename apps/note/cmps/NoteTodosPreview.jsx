@@ -11,7 +11,7 @@ export function NoteTodosPreview({ note }) {
             {note.info.todos.map((todo,idx) => 
                 <li key={idx}>{todo.txt}</li>
             )}
-            <input type="text" />
+            <input type="text" className="todos-input" placeholder="add a task..."/>
         </article>
     )
 }

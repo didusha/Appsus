@@ -1,0 +1,6 @@
+.todos-input{
+    border: .5px solid black;
+    width: 10em;
+    border-radius: 50px;
+    padding-left: 8px;
+}
