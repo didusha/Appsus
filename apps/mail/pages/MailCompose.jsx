@@ -5,7 +5,7 @@ const { useNavigate, useParams, useOutletContext } = ReactRouterDOM
 
 const { useState } = React
 
-export function MailEdit() {
+export function MailCompose() {
 
 
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
