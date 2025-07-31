@@ -14,7 +14,7 @@ export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTo
                     <li style={{ backgroundColor: note.style.backgroundColor }}
                         className="note" key={note.id}>
                         <button className="btn-pin" onClick={() => onTogglePin(note.id)}>
-                            <i className="fa-solid fa-thumbtack"></i>
+                            {note.isPinned ? <i className="fa-solid fa-thumbtack"></i> : <i class="fa-solid fa-thumbtack-slash"></i>}
                         </button>
 
                         <div className="dynamic-cmp">
