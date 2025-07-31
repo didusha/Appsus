@@ -1,13 +1,15 @@
 import { NoteFilter } from "./NoteFilter.jsx";
-
+const {useState} = React
 
 export function NoteSideFilter(){
+    const [isSearch, setIsSearch] = useState(false)
+
     return (
         <section className="side-filter">
-            <button>
+            <button onClick={() => setIsSearch(isSearch => !isSearch)}>
                 <i className="fa-solid fa-magnifying-glass"></i>
             </button>
-            <NoteFilter/>
+            {isSearch && <NoteFilter/>}
             <button>
                 <i className="fa-solid fa-file-lines"></i>
             </button>
