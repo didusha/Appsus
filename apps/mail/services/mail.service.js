@@ -12,7 +12,7 @@ export const mailService = {
     getEmptyMail,
     getDefaultFilter,
     getFilterFromSearchParams,
-    // checkSender
+    checkSender
 }
 
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
@@ -51,7 +51,14 @@ function get(mailId) {
 }
 
 function remove(mailId) {
-    return storageService.remove(MAIL_KEY, mailId)
+    return get(mailId).then(mail => {
+        if (mail.removedAt) {
+            return storageService.remove('mailDB', mailId).then(() => console.log('mail'))
+        } else {
+            mail.removedAt = Date.now()
+            return storageService.put('mailDB', mail)
+        }
+    })
 }
 
 function save(mail) {
@@ -85,10 +92,9 @@ function getDefaultFilter() {
     return { txt: '' }
 }
 
-// function checkSender(mail){
-//     console.log("🚀 ~ checkSender ~ mail:", mail)
-//     return sender = mail.from === loggedinUser.email ? mail.to : mail.from
-// }
+function checkSender(mail) {
+    return mail.from === loggedinUser.email ? mail.to : mail.from
+}
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY) || []
@@ -220,9 +226,9 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-function getEmptyMail(subject = '', createdAt = new Date()) {
-    return { subject, createdAt }
-}
+// function getEmptyMail(subject = '', createdAt = new Date()) {
+//     return { subject, createdAt }
+// }
 
 
 // const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
