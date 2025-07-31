@@ -13,6 +13,10 @@ export function NoteAdd({ onSaveNote, setIsAdding }) {
     }
 
     function onAddNote(ev) {
+        if(ev.target[0].value.length === 0) {
+            setIsAdding(false)
+            return
+        }
         ev.preventDefault()
         noteService.save(noteToAdd)
             .then(note => {

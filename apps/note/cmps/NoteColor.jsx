@@ -22,7 +22,7 @@ export function NoteColor({ backgroundColor, note, onSaveColor}) {
             <div className="items-container">
                 {colors.map(color => (
                     <div
-                        className={`item ${color === backgroundColor ? 'chosen' : ''}`}
+                        className={`item ${color === backgroundColor ? 'selected' : ''}`}
                         key={color}
                         style={{ backgroundColor: color }}
                         onClick={() => onSetColor(color)}

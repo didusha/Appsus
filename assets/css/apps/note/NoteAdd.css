@@ -19,6 +19,10 @@
     font-size: 15px;
 }
 
+.txt-add-input:focus{
+    outline: none;
+}
+
 .note-add button{
     justify-self: end;
     color: var(--gray3);

@@ -4,27 +4,38 @@ import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
 import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor }) {
-    const [isChangingColor, setIsChangingColor] = useState(false)
-    const [noteStyle, setNoteStyle] = useState({
-        backgroundColor: '#ffe6e6ff',
-    })
+export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTogglePin }) {
+    const [openColorPickerId, setOpenColorPickerId] = useState(null)
 
     return (
-        <section >
+        <section>
             <ul className="notes-list">
                 {notes.map(note => (
-                    <li style={{backgroundColor: note.style.backgroundColor}} className="note" key={note.id} >
-                        <button>pin</button>
-                        <div>
-                            <DynamicCmp cmpType={note.type} 
-                            note={note} 
-                            setIsNoteEdit={setIsNoteEdit} 
-                            setIsChangingColor={setIsChangingColor}
-                            onSaveColor={onSaveColor}
-                            {...noteStyle}/>
+                    <li style={{ backgroundColor: note.style.backgroundColor }}
+                        className="note" key={note.id}>
+                        <button className="btn-pin" onClick={() => onTogglePin(note.id)}>
+                            <i className="fa-solid fa-thumbtack"></i>
+                        </button>
+
+                        <div className="dynamic-cmp">
+                            <DynamicCmp cmpType={note.type} note={note} setIsNoteEdit={setIsNoteEdit} />
                         </div>
-                        <button onClick={() => onRemoveNote(note.id)}>x</button>
+                        <div className="note-actions">
+                            <button className="btn-color"
+                                onClick={() => setOpenColorPickerId(
+                                    openColorPickerId === note.id ? null : note.id
+                                )}>
+                                <i className="fa-solid fa-palette"></i>
+                            </button>
+
+                            <button onClick={() => onRemoveNote(note.id)}>
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+
+                        {openColorPickerId === note.id && (
+                            <NoteColor note={note} onSaveColor={onSaveColor} />
+                        )}
                     </li>
                 ))}
             </ul>
@@ -38,13 +49,6 @@ function DynamicCmp(props) {
         NoteImg: <NoteImgPreview {...props} />,
         NoteTodos: <NoteTodosPreview {...props} />,
     }
-    return (
-        <article>
-            {dynamicCmps[props.cmpType]}
-            {/* <button><i className="fa-solid fa-palette"></i></button>
-            <NoteColor {...props}/> */}
-            <button onClick={() => props.setIsChangingColor(!props.isChangingColor)}><i className="fa-solid fa-palette"></i></button>
-            {props.isChangingColor && <NoteColor {...props}/>}
-        </article>
-    )
+
+    return <article>{dynamicCmps[props.cmpType]}</article>
 }

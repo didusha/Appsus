@@ -50,7 +50,7 @@ function createNote(txt = '', type = 'NoteTxt') {
     return {
         createdAt: Date.now(),
         type,
-        isPinned: true,
+        isPinned: false,
         style: {
             backgroundColor: 'white'
         },
@@ -74,7 +74,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 createdAt: 1112222,
                 type: 'NoteTxt',
-                isPinned: true,
+                isPinned: false,
                 style: {
                     backgroundColor: 'white'
                 },
@@ -86,7 +86,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 createdAt: 1112222,
                 type: 'NoteTxt',
-                isPinned: true,
+                isPinned: false,
                 style: {
                     backgroundColor: 'white'
                 },

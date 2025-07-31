@@ -1,5 +1,6 @@
 .color {
     position: absolute;
+    bottom: -60px;
     width: 240px;
     box-shadow:
         0 2px 6px rgba(0, 0, 0, 0.3),
@@ -7,6 +8,7 @@
     border-radius: 8px;
     padding: 10px;
     background-color: white;
+    z-index: 1;
 }
 
 .items-container{
@@ -21,3 +23,7 @@
     margin: 2px;
 }
 
+.item:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
