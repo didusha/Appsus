@@ -13,6 +13,7 @@ export function NoteIndex() {
     const [notes, setNotes] = useState(null)
     const [isNoteEdit, setIsNoteEdit] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
+    // const [isPinned, setIsPinned] = useState(false)
 
     useEffect(() => {
         loadNotes()
@@ -39,21 +40,36 @@ export function NoteIndex() {
             })
     }
 
-    function onSaveNote(newNote){
-        setNotes([...notes,newNote])
+    function onTogglePin(id) {
+        setNotes(prevNotes => {
+            const updatedNotes = prevNotes.map(note =>
+                note.id === id ? { ...note, isPinned: !note.isPinned } : note
+            )
+            const sortedNotes = [...updatedNotes].sort((a, b) => b.isPinned - a.isPinned)
+
+            return sortedNotes
+        })
+    } 
+    function onSaveNote(newNote) {
+        setNotes([...notes, newNote])
     }
 
-    function onSaveColor(newNote, color){
-        setNotes(prevNotes => prevNotes.map(note => note.id === newNote.id ? {...note,style:{...note.style, backgroundColor: color}} : note))
+    function onSaveColor(newNote, color) {
+        setNotes(prevNotes => prevNotes.map(note => note.id === newNote.id ? { ...note, style: { ...note.style, backgroundColor: color } } : note))
     }
 
     if (!notes) return <div>loading...</div>
     return (
         <section className="notes-index">
-            {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} setIsAdding={setIsAdding}/>}
-            {!isAdding && <div className="txt-input"><input type="text" placeholder="Take a note..." onClick={() => setIsAdding(true)}/></div>}
-            {isAdding && <NoteAdd onSaveNote={onSaveNote} setIsAdding={setIsAdding}/>}
-            <NoteList onRemoveNote={onRemoveNote} notes={notes} setIsNoteEdit={setIsNoteEdit} onSaveColor={onSaveColor}/>
+            {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} setIsAdding={setIsAdding} />}
+            {!isAdding && <div className="txt-input"><input type="text" placeholder="Take a note..." onClick={() => setIsAdding(true)} /></div>}
+            {isAdding && <NoteAdd onSaveNote={onSaveNote} setIsAdding={setIsAdding} />}
+            <NoteList
+                onRemoveNote={onRemoveNote}
+                notes={notes}
+                setIsNoteEdit={setIsNoteEdit}
+                onSaveColor={onSaveColor}
+                onTogglePin={onTogglePin} />
         </section>
     )
 }

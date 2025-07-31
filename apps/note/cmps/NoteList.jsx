@@ -4,7 +4,7 @@ import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
 import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor }) {
+export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTogglePin }) {
     const [isChangingColor, setIsChangingColor] = useState(false)
     const [noteStyle, setNoteStyle] = useState({
         backgroundColor: '#ffe6e6ff',
@@ -15,7 +15,7 @@ export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor }) {
             <ul className="notes-list">
                 {notes.map(note => (
                     <li style={{backgroundColor: note.style.backgroundColor}} className="note" key={note.id} >
-                        <button>pin</button>
+                        <button onClick={() => onTogglePin(note.id)}>pin</button>
                         <div>
                             <DynamicCmp cmpType={note.type} 
                             note={note} 
