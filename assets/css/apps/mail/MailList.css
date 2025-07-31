@@ -4,7 +4,7 @@
    border-bottom: 1px solid #eee;
    cursor: pointer;
    position: relative;
-   line-height: 24px;
+   padding: 7px;
  }
 
  .mail-item:hover {
@@ -15,12 +15,14 @@
    background-color: white;
    font-weight: normal !important;
    color: #5f6368;
+   background-color: var(--color-bg--1);
  }
 
  .mail-item.read .from,
  .mail-item.read .subject {
    font-weight: normal !important;
    color: #5f6368;
+
  }
 
  .mail-item.read:hover {

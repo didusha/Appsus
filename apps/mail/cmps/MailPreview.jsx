@@ -8,7 +8,6 @@ export function MailPreview({ mail }) {
             {/* <input type="checkbox" ></input> */}
             <i className="fa-regular fa-star"></i>
             <span className="from">{utilService.showtSenderName(to)}</span>
-
             <div className="mail-content">
                 <span className="subject">{subject}</span>
                 <span className="body">{body}</span>

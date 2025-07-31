@@ -34,7 +34,6 @@ export function MailList({ mails, onRemoveMail, onReadMail }) {
                         </div>
                     </li>
                 ))}
-
             </ul>
         </section>
     )

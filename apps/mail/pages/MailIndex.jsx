@@ -5,6 +5,7 @@ import { MailList } from "../cmps/MailList.jsx"
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { MailFolderList } from "../cmps/MailFolderList.jsx"
 
 
 const { useState, useEffect } = React
@@ -26,8 +27,8 @@ export function MailIndex() {
     function loadMails() {
         mailService.query(filterBy)
             .then(mails => {
-                setMails(mails)
                 setUnReadMails(mails.filter(mail => !mail.isRead).length)
+                setMails(mails)
             })
             .catch(err => {
                 console.log("err:", err)
@@ -70,13 +71,12 @@ export function MailIndex() {
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
-            <section className="">
-                <Link className="btn-add-mail" to="/mail/edit" >Compose</Link>
-            </section>
-            <div><i className="fa-regular fa-envelope"></i>{unReadMails}</div>
-            <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-            <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
-            <Outlet context={{ sentMail }} />
+            <MailFolderList className="side-nav" unReadMails={unReadMails} />
+            <div>
+                <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
+                <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
+                <Outlet context={{ sentMail }} />
+            </div>
         </section>
     )
 }
