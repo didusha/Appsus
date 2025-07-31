@@ -59,7 +59,6 @@ export function MailCompose() {
                 <button type="button" onClick={()=> navigate('/mail/')}>X</button>
             </div>
             <form onSubmit={onSaveMail}>
-                {/* <label htmlFor="subject">To</label> */}
                 <input required value={to} placeholder="To" onChange={handleChange} type="text" name="to" />
                 <input required value={subject} onChange={handleChange} type="text" name="subject" placeholder="Subject" />
                 <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} placeholder="Enter mail"></textarea>
@@ -71,7 +70,3 @@ export function MailCompose() {
         </section>
     )
 }
-
-{/* <label htmlFor="speed">Speed</label>
-    <input value={speed} onChange={handleChange} type="number" name="speed" id="speed" /> */}
-// <section className={"mail-edit " + loadingClass}>

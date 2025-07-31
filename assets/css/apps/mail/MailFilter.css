@@ -1,13 +1,13 @@
  /* mail Filter  */
 
  .mail-filter {
-    background-color: var(--color-bg--2);
-}
+     background-color: var(--color-bg--2);
+ }
 
-.serach-input{
-    /* 1.5rem = 24px */
-    border-radius: 1.5rem;
-    background-color: #E9EEF6;
-    width: 80%;   
-    padding:7px;
-}
+ .serach-input {
+     /* 1.5rem = 24px */
+     border-radius: 1.5rem;
+     background-color: #E9EEF6;
+     width: 80%;
+     padding: 7px;
+ }
