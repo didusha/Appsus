@@ -29,4 +29,5 @@
  .created-at {
      grid-column: 4;
      justify-self: end;
+     margin-right: .5rem;
  }

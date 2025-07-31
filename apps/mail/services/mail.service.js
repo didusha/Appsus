@@ -11,7 +11,8 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    getFilterFromSearchParams
+    getFilterFromSearchParams,
+    // checkSender
 }
 
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
@@ -24,7 +25,21 @@ function query(filterBy = {}) {
                 mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.body))
             }
             if (filterBy.folder === "inbox") {
-                mails = mails.filter(mail =>  mail.from !==loggedinUser.email)
+                mails = mails.filter(mail => mail.to === loggedinUser.email && 
+                    mail.removedAt === null &&
+                    mail.from !== loggedinUser.email)
+            }
+            if (filterBy.folder === "sent") {
+                mails = mails.filter(mail => mail.to !== loggedinUser.email)
+            }
+            if (filterBy.folder === "trash") {
+                mails = mails.filter(mail => mail.removedAt !== null)
+            }
+            if (filterBy.folder === "draft") {
+                mails = mails.filter(mail => mail.createdAt && mail.sentAt === null)
+            }
+            if (filterBy.folder === "starred") {
+                mails = mails.filter(mail => mail.isStarred)
             }
             return mails
         })
@@ -44,6 +59,7 @@ function save(mail) {
         return storageService.put(MAIL_KEY, mail)
     } else {
         mail.sentAt = new Date()
+        mail.removedAt = null
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -59,12 +75,19 @@ function getEmptyMail(createdAt = Date.now()) {
         removedAt: '',
         from: 'user@appsus.com',
         to: '',
+        isStarred: false,
+        updatedAt: ''
     }
 }
 
 function getDefaultFilter() {
     return { txt: '' }
 }
+
+// function checkSender(mail){
+//     console.log("🚀 ~ checkSender ~ mail:", mail)
+//     return sender = mail.from === loggedinUser.email ? mail.to : mail.from
+// }
 
 function _createMails() {
     let mails = utilService.loadFromStorage(MAIL_KEY) || []

@@ -38,7 +38,7 @@
 
  .btn-mail-preview {
    position: absolute;
-   right: 0;
+   right: .5rem;
    top: 50%;
    transform: translateY(-50%);
    display: none;
@@ -50,4 +50,16 @@
 
  .mail-item:hover .created-at {
    display: none;
+ }
+
+ .no-mail-found {
+   text-align: center;
+ }
+
+ .no-mail-found::after {
+   content: '';
+   display: block;
+   height: 1px;
+   background-color: #ccc;
+   margin-top: 1rem;
  }

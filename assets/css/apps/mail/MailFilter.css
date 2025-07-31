@@ -2,6 +2,7 @@
 
  .mail-filter {
      background-color: var(--color-bg--2);
+     padding: 15px;
  }
 
  .serach-input {

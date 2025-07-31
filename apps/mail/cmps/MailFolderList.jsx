@@ -19,9 +19,9 @@ export function MailFolderList({ unReadMails, onSetFilterBy, filterBy }) {
             <p ><Link className="btn-add-mail" to="/mail/edit" >Compose</Link></p>
             <p onClick={() => onClickedFolder('inbox')}><i className="fa-solid fa-inbox"></i> Inbox <span className="unReadMails">{unReadMails}</span></p>
             <p onClick={() => onClickedFolder('starred')}><i className="fa-regular fa-star"></i> Starred <span></span></p>
-            <p><i className="fa-regular fa-pen-to-square"></i> Drafts <span></span></p>
+            <p onClick={() => onClickedFolder('draft')}><i className="fa-regular fa-pen-to-square"></i> Drafts <span></span></p>
             <p onClick={() => onClickedFolder('sent')}><i className="fa-regular fa-paper-plane"></i> Sent <span></span></p>
-            <p><i className="fa-solid fa-trash-can"></i> Trash <span></span></p>
+            <p onClick={() => onClickedFolder('trash')}><i className="fa-solid fa-trash-can"></i> Trash <span></span></p>
         </section>
 
     )

@@ -127,8 +127,8 @@ function formatMailDate(timestamp) {
     }
 }
 
-function showtSenderName(mail) {
-    // if (!mail) return ''
-    const name = mail.split('@')[0];
+function showtSenderName(from) {
+    if (!from || typeof from !== 'string') return ''
+    const name = from.split('@')[0];
     return name.charAt(0).toUpperCase() + name.slice(1);
 }
