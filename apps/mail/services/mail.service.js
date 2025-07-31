@@ -64,19 +64,19 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(createdAt = Date.now()) {
+function getEmptyMail(createdAt = Date.now(), from ='user@appsus.com') {
     return {
         id: '',
         createdAt,
         subject: '',
         body: '',
         isRead: false,
-        sentAt: '',
-        removedAt: '',
-        from: 'user@appsus.com',
+        sentAt: null,
+        removedAt: null,
+        from: from,
         to: '',
         isStarred: false,
-        updatedAt: ''
+        updatedAt: null,
     }
 }
 
@@ -225,15 +225,3 @@ function getEmptyMail(subject = '', createdAt = new Date()) {
 
 
 // const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
-
-// function _createMail(subject, createdat = 250) {
-//     const mail = getEmptyMail(subject, createdat)
-//     mail.id = utilService.makeId()
-//     return mail
-// }
-
-// function _createMail() {
-//     const mail = getEmptyMail()
-//     mail.id = utilService.makeId()
-//     return mail
-// }
