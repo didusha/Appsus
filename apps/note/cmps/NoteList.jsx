@@ -11,7 +11,7 @@ export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin, onDupl
         <section>
             <ul className="notes-list">
                 {notes.map(note => (
-                    <li style={{ backgroundColor: note.style.backgroundColor }}
+                    <li style={{ backgroundColor: (note.style && note.style.backgroundColor) }}
                         className="note" key={note.id}>
                         <button className="btn-pin" onClick={() => onTogglePin(note)}>
                             {note.isPinned ? <i className="fa-solid fa-thumbtack"></i> : <i className="fa-solid fa-thumbtack-slash"></i>}
