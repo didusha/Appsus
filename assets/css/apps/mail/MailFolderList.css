@@ -12,7 +12,7 @@
      margin-top: 1rem;
      margin-bottom: 1rem;
      background-color: #c2e7ff;
-     border-radius: .625rem;
+     border-radius: .7rem;
      padding: 1.25rem;
  }
 
@@ -20,7 +20,7 @@
      display: grid;
      grid-template-columns: 50px 1fr 50px;
      cursor: pointer;
-     font-size: 13px;
+     font-size: 14px;
      padding: 5px;
      width: 100%;
      box-sizing: border-box;
@@ -30,7 +30,7 @@
  .mail-folder-list i {
      place-self: start;
      font-size: 1rem;
-     margin-left: .8rem;
+     margin-left: 1.1rem;
  }
 
  .mail-folder-list span {
@@ -47,9 +47,6 @@
      background-color: #e0e0e0;
      border-radius: 0 .625rem .625rem 0;
  }
-
-
- .btn-compose-mail {}
 
  .btn-compose-mail::before {
      font-family: "Font Awesome 6 Free";
