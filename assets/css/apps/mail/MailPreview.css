@@ -1,1 +1,32 @@
  /* mail Preview  */
+ .mail-preview {
+     display: grid;
+     grid-template-columns: 30px 160px 1fr 80px;
+     align-items: center;
+ }
+
+ .fa-star {
+     grid-column: 1;
+ }
+
+ .from {
+     grid-column: 2;
+     font-weight: bold;
+ }
+
+ .subject{
+    font-weight: bold;
+ }
+
+ .mail-content {
+     grid-column: 3;
+ }
+
+ .subject::after{
+    content: ' - ';
+ }
+
+ .created-at {
+     grid-column: 4;
+     justify-self: end;
+ }

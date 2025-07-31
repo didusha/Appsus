@@ -25,7 +25,7 @@ export function MailList({ mails, onRemoveMail, onReadMail }) {
             <ul>
                 {mails.map(mail => (
                     <li key={mail.id} className={`mail-item ${mail.isRead ? 'read' : ''}`} >
-                        <div onClick={() => onClickMail(mail)}>
+                        <div  onClick={() => onClickMail(mail)}>
                             <MailPreview mail={mail} />
                         </div>
                         <div className="btn-mail-preview">
