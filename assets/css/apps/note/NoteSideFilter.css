@@ -1,0 +1,13 @@
+.side-filter{
+    display: grid;
+}
+
+.side-filter button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.side-filter button:hover{
+    background-color: rgb(255, 255, 205);
+}
