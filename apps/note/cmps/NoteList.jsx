@@ -15,7 +15,9 @@ export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTo
             <ul className="notes-list">
                 {notes.map(note => (
                     <li style={{backgroundColor: note.style.backgroundColor}} className="note" key={note.id} >
-                        <button onClick={() => onTogglePin(note.id)}>pin</button>
+                        <button className="btn-pin" onClick={() => onTogglePin(note.id)}>
+                            <i className="fa-solid fa-thumbtack"></i>
+                        </button>
                         <div>
                             <DynamicCmp cmpType={note.type} 
                             note={note} 
@@ -41,10 +43,10 @@ function DynamicCmp(props) {
     return (
         <article>
             {dynamicCmps[props.cmpType]}
-            {/* <button><i className="fa-solid fa-palette"></i></button>
-            <NoteColor {...props}/> */}
-            <button onClick={() => props.setIsChangingColor(!props.isChangingColor)}><i className="fa-solid fa-palette"></i></button>
-            {props.isChangingColor && <NoteColor {...props}/>}
+            <button><i className="fa-solid fa-palette"></i></button>
+            <NoteColor {...props}/>
+            {/* <button className="btn-color" onClick={() => props.setIsChangingColor(!props.isChangingColor)}><i className="fa-solid fa-palette"></i></button>
+            {props.isChangingColor && <NoteColor {...props}/>} */}
         </article>
     )
 }
