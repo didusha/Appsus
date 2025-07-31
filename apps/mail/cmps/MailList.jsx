@@ -2,7 +2,7 @@ import { MailPreview } from "../cmps/MailPreview.jsx"
 
 const { useNavigate } = ReactRouterDOM
 
-export function MailList({ mails, onRemoveMail, onReadMail }) {
+export function MailList({ mails, onRemoveMail, onReadMail, onStarMail }) {
 
     const navigate = useNavigate()
 
@@ -18,15 +18,14 @@ export function MailList({ mails, onRemoveMail, onReadMail }) {
         onReadMail(mail.id, isRead)
     }
 
-    const mailStatus = ""
-    if (!mails.length) return <div>No Mails To Show...</div>
+    if (!mails.length) return <div className="no-mail-found">No messages matched your search. Try other options.</div>
     return (
         <section className='mail-list'>
             <ul>
                 {mails.map(mail => (
                     <li key={mail.id} className={`mail-item ${mail.isRead ? 'read' : ''}`} >
                         <div  onClick={() => onClickMail(mail)}>
-                            <MailPreview mail={mail} />
+                            <MailPreview mail={mail} onStarMail={onStarMail}/>
                         </div>
                         <div className="btn-mail-preview">
                             <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>

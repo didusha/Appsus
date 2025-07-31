@@ -5,26 +5,32 @@
      flex-direction: column;
      align-items: center;
      background-color: var(--color-bg--2);
+     padding-right: 10px;;
  }
 
  .mail-folder-list p:first-child {
-     margin-top: 1.25rem;
-     margin-bottom: 1.25rem;
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+     background-color: #c2e7ff;
+     border-radius: .7rem;
+     padding: 1.25rem;
  }
 
  .mail-folder-list p:not(:first-child) {
      display: grid;
-     grid-template-columns: 30px 40px 40px;
+     grid-template-columns: 50px 1fr 50px;
      cursor: pointer;
-     font-size: 13px;
-    padding: 5px;
+     font-size: 14px;
+     padding: 5px;
      width: 100%;
      box-sizing: border-box;
+     margin-block: 7px;
  }
 
  .mail-folder-list i {
      place-self: start;
-     font-size: 16px;
+     font-size: 1rem;
+     margin-left: 1.1rem;
  }
 
  .mail-folder-list span {
@@ -33,14 +39,18 @@
 
  .unReadMails {
      font-weight: bold;
+     margin-right: .8rem;
+     ;
  }
 
  .mail-folder-list p:not(:first-child):hover {
      background-color: #e0e0e0;
-     border-radius: 0 10px 10px 0;
+     border-radius: 0 .625rem .625rem 0;
  }
 
- /* .mail-folder-list p:not(:first-child):active {
-     background-color: #e0e0e0;
-     border-radius: 0 10px 10px 0;
- } */
+ .btn-compose-mail::before {
+     font-family: "Font Awesome 6 Free";
+     content: "\f304";
+     font-weight: 900;
+     margin-right: 0.5rem;
+ }

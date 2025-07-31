@@ -9,6 +9,8 @@ export function MailCompose() {
 
 
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
+    console.log("🚀 ~ MailCompose ~ mailToEdit:", mailToEdit)
+
 
     const { sentMail } = useOutletContext()
     const navigate = useNavigate()
@@ -51,20 +53,23 @@ export function MailCompose() {
             })
     }
 
-    const { subject, to, body } = mailToEdit
+    const { subject, to, from, body } = mailToEdit
+    const signature = "Best Regards,\nCoding academy"
+
     return (
-        <section className="mail-edit">
-            <div className="mail-edit-header">
+        <section className="mail-compose">
+            <div className="mail-compose-header">
                 <span>New Message</span>
-                <button type="button" onClick={()=> navigate('/mail/')}>X</button>
+                <button type="button" onClick={() => navigate('/mail/')}>x</button>
             </div>
             <form onSubmit={onSaveMail}>
-                <input required value={to} placeholder="To" onChange={handleChange} type="text" name="to" />
-                <input required value={subject} onChange={handleChange} type="text" name="subject" placeholder="Subject" />
-                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} placeholder="Enter mail"></textarea>
+                {/* <input value={from} placeholder="From" onChange={handleChange} type="text" name="from" className="from" /> */}
+                <input required value={to} placeholder="To" onChange={handleChange} type="text" name="to" className="to" />
+                <input required value={subject} onChange={handleChange} type="text" name="subject" placeholder="Subject" className="subject" />
+                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} className="body" defaultValue= {signature}></textarea>
 
                 <div>
-                    <button>Send</button>
+                    <button className="btn-send-mail">Send</button>
                 </div>
             </form>
         </section>

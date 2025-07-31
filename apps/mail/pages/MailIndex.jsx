@@ -67,13 +67,25 @@ export function MailIndex() {
             })
     }
 
+    function onStarMail(mailId, isStarred) {
+        mailService.get(mailId)
+            .then(prevMail => {
+                const updatedMail = { ...prevMail, ...isStarred }
+                return mailService.save(updatedMail)
+            })
+            .then(() => loadMails())
+            .catch(err => {
+                console.error('Error updating mail:', err)
+            })
+    }
+
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
-            <MailFolderList className="side-nav" unReadMails={unReadMails} onSetFilterBy={onSetFilterBy} filterBy={filterBy}/>
+            <MailFolderList className="side-nav" unReadMails={unReadMails} onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <div>
                 <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
-                <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
+                <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} onStarMail={onStarMail} />
                 <Outlet context={{ sentMail }} />
             </div>
         </section>
