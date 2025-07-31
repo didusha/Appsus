@@ -5,6 +5,11 @@
     margin: 10px;
 }
 
+.dynamic-cmp{
+    padding: 10px;
+    padding-bottom: 50px;
+}
+
 .note {
     position: relative;
     display: grid;

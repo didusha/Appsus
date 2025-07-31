@@ -17,7 +17,7 @@ export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTo
                             <i className="fa-solid fa-thumbtack"></i>
                         </button>
 
-                        <div>
+                        <div className="dynamic-cmp">
                             <DynamicCmp cmpType={note.type} note={note} setIsNoteEdit={setIsNoteEdit} />
                         </div>
                         <div className="note-actions">
