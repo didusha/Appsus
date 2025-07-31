@@ -37,7 +37,6 @@ function get(mailId) {
 }
 
 function remove(mailId) {
-    // return Promise.reject('Oh No!')
     return storageService.remove(MAIL_KEY, mailId)
 }
 

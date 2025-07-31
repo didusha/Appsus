@@ -1,7 +1,6 @@
 
 import { MailFilter } from "../cmps/MailFilter.jsx"
 import { MailList } from "../cmps/MailList.jsx"
-// import { MailDetails } from "./MailDetails.jsx"
 import { mailService } from "../services/mail.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { utilService } from "../../../services/util.service.js"
@@ -68,10 +67,14 @@ export function MailIndex() {
             })
     }
 
+    function onClickedSent(){
+        // onchange
+    }
+
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
-            <MailFolderList className="side-nav" unReadMails={unReadMails} />
+            <MailFolderList className="side-nav" unReadMails={unReadMails} onClickedSent={onClickedSent}/>
             <div>
                 <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
                 <MailList onRemoveMail={onRemoveMail} onReadMail={onReadMail} mails={mails} />
