@@ -1,25 +1,13 @@
  /* mail Filter  */
 
  .mail-filter {
-    /* background-color: blue; */
-    display: flex;
-    justify-content: center;
+    margin-bottom: 1rem;
 }
 
 .serach-input{
     /* 1.5rem = 24px */
     border-radius: 1.5rem;
     background-color: #E9EEF6;
-    line-height:1.5rem ;          
+    width: 80%;   
+    padding:7px;
 }
-
-
-/* .mail-filter form {
-    display: grid;
-    grid-template-columns: 100px 200px;
-    gap: .5em;
-}
-
-.mail-filter form button {
-    margin-inline: 0
-} */
