@@ -35,11 +35,11 @@ export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin, onDupl
                             <button onClick={() => onRemoveNote(note.id)}>
                                 <i className="fa-solid fa-trash-can"></i>
                             </button>
+                                {openColorPickerId === note.id && (
+                                    <NoteColor note={note} onSaveColor={onSaveColor} />
+                        )}
                         </div>
 
-                        {openColorPickerId === note.id && (
-                            <NoteColor note={note} onSaveColor={onSaveColor} />
-                        )}
                     </li>
                 ))}
             </ul>
