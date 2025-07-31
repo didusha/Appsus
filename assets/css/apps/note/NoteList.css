@@ -5,7 +5,7 @@
     margin: 10px;
 }
 
-.dynamic-cmp{
+.dynamic-cmp {
     padding: 10px;
     padding-bottom: 50px;
 }
@@ -22,8 +22,24 @@
     height: max-content;
 }
 
-.note-actions{
+.note-actions {
     position: relative;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.note:hover .note-actions{
+    opacity: 1;
+}
+
+.btn-pin{
+    position: relative;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+
+.note:hover .btn-pin{
+    opacity: 1;
 }
 
 .note:hover {
@@ -36,6 +52,6 @@
     font-weight: bold;
 }
 
-.btn-pin{
+.btn-pin {
     justify-self: end;
 }
