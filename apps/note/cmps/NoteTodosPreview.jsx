@@ -1,7 +1,8 @@
 import { NoteEdit } from "../cmps/NoteEdit.jsx"
+import { noteService } from "../../note/services/note.service.js"
 const { useState } = React
 
-export function NoteTodosPreview({ note }) {
+export function NoteTodosPreview({ note, onUpdateNote }) {
     const [todos, setTodos] = useState(note.info.todos || [])
     const [newTodo, setNewTodo] = useState('')
     const [isNoteEdit, setIsNoteEdit] = useState(false)
@@ -11,13 +12,30 @@ export function NoteTodosPreview({ note }) {
     function handleAddTodo() {
         if (!newTodo.trim()) return
         const updatedTodos = [...todos, { txt: newTodo }]
+        note = { ...note, info: { ...note.info, todos: updatedTodos } }
         setTodos(updatedTodos)
         setNewTodo('')
+        noteService.save(note)
+            .then(() => {
+                onUpdateNote(true)
+            })
+            .catch(err => {
+                console.log('Problem adding note:', err)
+            })
     }
 
     function handleRemoveTodo(idxToRemove) {
         const updatedTodos = todos.filter((_, idx) => idx !== idxToRemove)
+        note = { ...note, info: { ...note.info, todos: updatedTodos } }
         setTodos(updatedTodos)
+        noteService.save(note)
+            .then(() => {
+                onUpdateNote(true)
+            })
+            .catch(err => {
+                console.log('Problem adding note:', err)
+            })
+
     }
 
     return (

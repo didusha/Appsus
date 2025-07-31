@@ -19,11 +19,11 @@ export function NoteIndex() {
     const [isAdding, setIsAdding] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParams(searchParams))
-
+    const [isUpdate, setIsUpdate] = useState(false)
     useEffect(() => {
         setSearchParams(utilService.getTruthyValues(filterBy))
         loadNotes(filterBy)
-    }, [filterBy])
+    }, [filterBy,isUpdate])
 
     function loadNotes(filterBy) {
         noteService.query(filterBy)
@@ -46,8 +46,14 @@ export function NoteIndex() {
             })
     }
 
+    function onDuplicateNote(newNote) {
+        newNote.id = null
+        noteService.save(newNote)
+            .then(() => loadNotes(filterBy))
+    }
+
     function onTogglePin(pinNote) {
-        const newNote = { ...pinNote, isPinned: !pinNote.isPinned } 
+        const newNote = { ...pinNote, isPinned: !pinNote.isPinned }
         noteService.save(newNote)
         setNotes(prevNotes => {
             const updatedNotes = prevNotes.map(note =>
@@ -57,8 +63,13 @@ export function NoteIndex() {
             return sortedNotes
         })
     }
+
     function onSaveNote(newNote) {
         setNotes([...notes, newNote])
+    }
+
+    function onUpdateNote() {
+        setIsUpdate(true)
     }
 
     function onSaveColor(newNote, color) {
@@ -84,7 +95,9 @@ export function NoteIndex() {
                     onRemoveNote={onRemoveNote}
                     notes={notes}
                     onSaveColor={onSaveColor}
-                    onTogglePin={onTogglePin} />
+                    onTogglePin={onTogglePin}
+                    onDuplicateNote={onDuplicateNote}
+                    onUpdateNote={onUpdateNote} />
             </div>
         </section>
     )
