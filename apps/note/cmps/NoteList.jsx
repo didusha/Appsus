@@ -1,24 +1,32 @@
 import { NoteTxtPreview } from "./NoteTxtPreview.jsx"
 import { NoteImgPreview } from "./NoteImgPreview.jsx"
 import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
-// import { NoteColor } from "./NoteColor.jsx"
+import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
 export function NoteList({ notes, onRemoveNote, setIsNoteEdit }) {
-    // const [isChangingColor, setIsChangingColor] = useState(false)
-    const [footerStyle, setFooterStyle] = useState({
+    const [isChangingColor, setIsChangingColor] = useState(false)
+    const [noteStyle, setNoteStyle] = useState({
         backgroundColor: '#ffe6e6ff',
     })
 
+    function onSetNoteStyle(newColor) {
+        setNoteStyle(pervColor => ({ ...pervColor, ...newColor }))
+    }
 
     return (
         <section >
             <ul className="notes-list">
                 {notes.map(note => (
-                    <li style={footerStyle} className="note" key={note.id} >
+                    <li style={noteStyle} className="note" key={note.id} >
                         <button>pin</button>
                         <div>
-                            <DynamicCmp cmpType={note.type} note={note} setIsNoteEdit={setIsNoteEdit}/>
+                            <DynamicCmp cmpType={note.type} 
+                            note={note} 
+                            setIsNoteEdit={setIsNoteEdit} 
+                            setIsChangingColor={setIsChangingColor}
+                            onSetNoteStyle={onSetNoteStyle} 
+                            {...noteStyle}/>
                         </div>
                         {/* <button onClick={() => setIsChangingColor(!isChangingColor)}><i className="fa-solid fa-palette"></i></button> */}
                         <button onClick={() => onRemoveNote(note.id)}>x</button>
@@ -37,6 +45,12 @@ function DynamicCmp(props) {
         NoteTodos: <NoteTodosPreview {...props} />,
     }
     return (
-        dynamicCmps[props.cmpType]
+        <article>
+            {dynamicCmps[props.cmpType]}
+            <button><i className="fa-solid fa-palette"></i></button>
+            <NoteColor {...props}/>
+            {/* <button onClick={() => setIsChangingColor(!isChangingColor)}><i className="fa-solid fa-palette"></i></button>
+            {isChangingColor && <NoteColor {...props}/>} */}
+        </article>
     )
 }

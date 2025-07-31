@@ -9,34 +9,15 @@
     background-color: white;
 }
 
-.color button {
+.items-container{
+    display: flex;
+    height: 40px;
+}
+
+.item {
     border-radius: 50%;
     height: 35px;
     width: 35px;
     margin: 2px;
 }
 
-.white {
-    border: .3px solid var(--gray1);
-    background-color: #fff;
-}
-
-.pink {
-    background-color: #ffbbdf;
-}
-
-.yellow {
-    background-color: #fffcaa;
-}
-
-.green {
-    background-color: #c4ffb9;
-}
-
-.blue {
-    background-color: #bcedff;
-}
-
-.purple {
-    background-color: #e3b7ff;
-}
