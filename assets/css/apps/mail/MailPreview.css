@@ -1,7 +1,7 @@
  /* mail Preview  */
  .mail-preview {
      display: grid;
-     grid-template-columns: 30px 160px 1fr 80px;
+     grid-template-columns: 30px 100px 1fr 80px;
      align-items: center;
  }
 

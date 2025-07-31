@@ -137,7 +137,41 @@ function _createMails() {
                 removedAt: null,
                 from: 'teamlead@company.com',
                 to: 'user@appsus.com',
-            }
+            },
+            {
+                id: 'm1',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+                subject: 'Meeting Recap',
+                body: 'Hey team, just recapping our discussion from today. We agreed to finalize the design specs by Friday, and then move to testing. Please update your progress before Thursday noon. Let me know if anything is unclear.',
+                isRead: false,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+                removedAt: null,
+                from: 'dana@company.com',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'm2',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
+                subject: 'Flight Details',
+                body: 'Your flight is confirmed for next week. Departure from JFK at 9:30 AM. Arrival at LAX is expected at 12:15 PM local time. Please check in online and bring your ID and boarding pass.',
+                isRead: true,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
+                removedAt: null,
+                from: 'noreply@airline.com',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'm3',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 5,
+                subject: 'Invoice Attached',
+                body: 'Hello, please find attached the invoice for your latest purchase. If you have any questions or believe there’s an error in the billing, contact us within 7 business days. Thank you for choosing our service.',
+                isRead: false,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 5,
+                removedAt: null,
+                from: 'billing@store.com',
+                to: 'user@appsus.com'
+            },
+
 
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
@@ -164,7 +198,7 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-function getEmptyMail(subject = '', createdAt = '') {
+function getEmptyMail(subject = '', createdAt = new Date()) {
     return { subject, createdAt }
 }
 

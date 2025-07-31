@@ -27,17 +27,25 @@
    background-color: #f5f5f5;
  }
 
+ .mail-item .mail-content {
+   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   max-width: auto;
+ }
+
  .btn-mail-preview {
    position: absolute;
    right: 0;
-   top: 10%;
+   top: 50%;
+   transform: translateY(-50%);
    display: none;
  }
 
-  .mail-item:hover  .btn-mail-preview{
+ .mail-item:hover .btn-mail-preview {
    display: block;
  }
 
-   .mail-item:hover  .created-at{
+ .mail-item:hover .created-at {
    display: none;
  }
