@@ -52,7 +52,7 @@ function createNote(txt = '', type = 'NoteTxt') {
         type,
         isPinned: true,
         style: {
-            backgroundColor: '#00d'
+            backgroundColor: 'white'
         },
         info: {
             txt
@@ -76,7 +76,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'white'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -88,7 +88,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: true,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'white'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!2'
@@ -104,7 +104,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'white'
                 }
             },
             {
@@ -113,7 +113,7 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: 'white'
                 },
                 info: {
                     title: 'Get my stuff together',

@@ -1,4 +1,6 @@
-export function NoteColor({onSetNoteStyle, backgroundColor}) {
+import { noteService } from "../services/note.service.js";
+
+export function NoteColor({ backgroundColor, note, onSaveColor}) {
     const colors = [
         'rgb(230, 230, 230)',
         '#ffbbdf',
@@ -8,11 +10,12 @@ export function NoteColor({onSetNoteStyle, backgroundColor}) {
         '#e3b7ff',
     ]
 
-
     function onSetColor(color) {
-        onSetNoteStyle({ backgroundColor: color })
+        const newNote = {...note,style:{...note.style, backgroundColor: color}}
+        noteService.save(newNote)
+            .then(savedNote => onSaveColor(savedNote, color))
+            .catch(err => console.log(err))
     }
-
 
     return (
         <section className="color">
