@@ -23,10 +23,9 @@ function query(filterBy = {}) {
                 const regExp = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.body))
             }
-            // if (filterBy.minCreatedAt) {
-            //     mails = mails.filter(mail => mail.createdAt >= filterBy.minCreatedAt)
-            // }
-            // console.log(' mails:', mails)
+            if (filterBy.folder === "inbox") {
+                mails = mails.filter(mail =>  mail.from !==loggedinUser.email)
+            }
             return mails
         })
 }
@@ -179,10 +178,10 @@ function _createMails() {
 
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
-    // const minCreatedAt = searchParams.get('minCreatedAt') || ''
+    const folder = searchParams.get('folder') || 'inbox'
     return {
         txt,
-        // minCreatedAt
+        folder,
     }
 }
 
