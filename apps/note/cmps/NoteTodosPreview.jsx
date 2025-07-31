@@ -1,9 +1,9 @@
 
-
+const {useState} = React
 
 export function NoteTodosPreview({ note }) {
 
-
+    const [todos, setTodos] = useState(null)
 
     return (
         <article className="note-todos-preview">

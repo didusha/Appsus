@@ -1,5 +1,6 @@
 .note-add {
     margin: auto;
+    margin-top: 12px;
     display: grid;
     height: 80px;
     border-radius: 8px;
