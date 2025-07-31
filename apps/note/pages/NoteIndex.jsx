@@ -2,7 +2,7 @@ import { NoteList } from "../cmps/NoteList.jsx";
 import { NoteSideFilter } from "../cmps/NoteSideFilter.jsx";
 import { noteService } from "../services/note.service.js";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-import { NoteEdit } from "../cmps/NoteEdit.jsx"
+// import { NoteEdit } from "../cmps/NoteEdit.jsx"
 import { NoteAdd } from "../cmps/NoteAdd.jsx";
 import { utilService } from "../../../services/util.service.js"
 
@@ -16,7 +16,6 @@ const { useSearchParams } = ReactRouterDOM
 export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
-    const [isNoteEdit, setIsNoteEdit] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(noteService.getFilterFromSearchParams(searchParams))
@@ -28,7 +27,7 @@ export function NoteIndex() {
 
     function loadNotes(filterBy) {
         noteService.query(filterBy)
-            .then(notes => setNotes(notes))
+            .then(notes => setNotes(notes.sort((a, b) => b.isPinned - a.isPinned)))
             .catch(err => {
                 console.log('err:', err)
                 showErrorMsg('Cannot get notes!')
@@ -47,13 +46,14 @@ export function NoteIndex() {
             })
     }
 
-    function onTogglePin(id) {
+    function onTogglePin(pinNote) {
+        const newNote = { ...pinNote, isPinned: !pinNote.isPinned } 
+        noteService.save(newNote)
         setNotes(prevNotes => {
             const updatedNotes = prevNotes.map(note =>
-                note.id === id ? { ...note, isPinned: !note.isPinned } : note
+                note.id === pinNote.id ? newNote : note
             )
             const sortedNotes = [...updatedNotes].sort((a, b) => b.isPinned - a.isPinned)
-
             return sortedNotes
         })
     }
@@ -78,13 +78,11 @@ export function NoteIndex() {
             </div>
             <div className="page-item">
 
-                {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} setIsAdding={setIsAdding} />}
                 {!isAdding && <div className="txt-input"><input type="text" placeholder="Take a note..." onClick={() => setIsAdding(true)} /></div>}
                 {isAdding && <NoteAdd onSaveNote={onSaveNote} setIsAdding={setIsAdding} />}
                 <NoteList
                     onRemoveNote={onRemoveNote}
                     notes={notes}
-                    setIsNoteEdit={setIsNoteEdit}
                     onSaveColor={onSaveColor}
                     onTogglePin={onTogglePin} />
             </div>

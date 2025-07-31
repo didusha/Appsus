@@ -1,10 +1,10 @@
 import { noteService } from "../services/note.service.js";
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
-
 const { useState } = React
 
 export function NoteAdd({ onSaveNote, setIsAdding }) {
     const [noteToAdd, setNoteToAdd] = useState(noteService.createNote())
+    const [placeholder, setPlaceholder] = useState('Take a note...')
 
     function handleChange({ target }) {
         const field = target.name
@@ -13,11 +13,11 @@ export function NoteAdd({ onSaveNote, setIsAdding }) {
     }
 
     function onAddNote(ev) {
-        if(ev.target[0].value.length === 0) {
+        ev.preventDefault()
+        if (ev.target[0].value.length === 0) {
             setIsAdding(false)
             return
         }
-        ev.preventDefault()
         noteService.save(noteToAdd)
             .then(note => {
                 onSaveNote(note)
@@ -30,16 +30,42 @@ export function NoteAdd({ onSaveNote, setIsAdding }) {
             .finally(() => setIsAdding(false))
     }
 
+    function changePlaceholderToUrl(ev) {
+        ev.preventDefault()
+        setPlaceholder('Add a URL...')
+    }
+
+    function changePlaceholderToTxt(ev) {
+        ev.preventDefault()
+        setPlaceholder('Take a note...')
+    }
+
     const { info } = noteToAdd
     return (
-        <form className="note-add" onSubmit={onAddNote}>
+        <form onSubmit={onAddNote} className="note-add">
             <h2>Title</h2>
-            <input className="txt-add-input"
-                name="txt"
-                value={info.txt}
-                onChange={handleChange}
-                type="text"
-                placeholder="Take a note..." />
+            <div className="add-types">
+                <input className="txt-add-input"
+                    name="txt"
+                    value={info.txt}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder={placeholder} />
+                <div className="btns-add">
+                    <button onClick={changePlaceholderToTxt}>
+                        <i className="fa-solid fa-file-lines"></i>
+                    </button>
+                    <button onClick={changePlaceholderToUrl}>
+                        <i className="fa-solid fa-image"></i>
+                    </button>
+                    <button onClick={changePlaceholderToUrl}>
+                        <i className="fa-solid fa-video"></i>
+                    </button>
+                    <button>
+                        <i className="fa-solid fa-list"></i>
+                    </button>
+                </div>
+            </div>
             <button type="submit" >close</button>
         </form>
     )

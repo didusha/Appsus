@@ -17,6 +17,10 @@ export function NoteSideFilter({ filterBy, onSetFilterBy }) {
         let value = target.value
         setFilterByToEdit(prevFilter => ({ ...prevFilter, [field]: value }))
     }
+    
+    function handleTypeChange(type) {
+        setFilterByToEdit(prevFilter => ({ ...prevFilter, 'type': type }))
+    }
 
 
     const { txt } = filterByToEdit
@@ -35,13 +39,13 @@ export function NoteSideFilter({ filterBy, onSetFilterBy }) {
                 className="search-input"
                 type="text"
                 placeholder="search note..." />}
-            <button>
+            <button onClick={() => handleTypeChange('NoteTxt')}>
                 <i className="fa-solid fa-file-lines"></i>
             </button>
-            <button>
+            <button onClick={() => handleTypeChange('NoteImg')}>
                 <i className="fa-solid fa-images"></i>
             </button>
-            <button>
+            <button onClick={() => handleTypeChange('NoteTodos')}>
                 <i className="fa-solid fa-list"></i>
             </button>
         </section>

@@ -4,7 +4,7 @@ import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
 import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTogglePin }) {
+export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin }) {
     const [openColorPickerId, setOpenColorPickerId] = useState(null)
 
     return (
@@ -13,12 +13,12 @@ export function NoteList({ notes, onRemoveNote, setIsNoteEdit, onSaveColor, onTo
                 {notes.map(note => (
                     <li style={{ backgroundColor: note.style.backgroundColor }}
                         className="note" key={note.id}>
-                        <button className="btn-pin" onClick={() => onTogglePin(note.id)}>
-                            {note.isPinned ? <i className="fa-solid fa-thumbtack"></i> : <i class="fa-solid fa-thumbtack-slash"></i>}
+                        <button className="btn-pin" onClick={() => onTogglePin(note)}>
+                            {note.isPinned ? <i className="fa-solid fa-thumbtack"></i> : <i className="fa-solid fa-thumbtack-slash"></i>}
                         </button>
 
                         <div className="dynamic-cmp">
-                            <DynamicCmp cmpType={note.type} note={note} setIsNoteEdit={setIsNoteEdit} />
+                            <DynamicCmp cmpType={note.type} note={note} />
                         </div>
                         <div className="note-actions">
                             <button className="btn-color"
