@@ -1,6 +1,29 @@
 .todos-input{
     border: .5px solid black;
-    width: 10em;
+    width: 8.5em;
     border-radius: 50px;
     padding-left: 8px;
+    grid-row: 1;
+}
+
+.todo-container{
+    display: grid;
+}
+
+.todo{
+    grid-row: 1;
+}
+
+.remove-todo{
+    grid-row: 1;
+    justify-self: end;
+}
+
+.add-todo{
+    grid-row: 1;
+    justify-self: end;
+}
+
+.todo-title:hover{
+    cursor: pointer;
 }

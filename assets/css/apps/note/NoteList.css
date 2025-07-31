@@ -1,7 +1,7 @@
 .notes-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 190px);
-    gap: 10px;
+    columns: 220px;
+    column-gap: 10px;
+    gap: 13px;
     margin: 10px;
 }
 
@@ -17,7 +17,9 @@
     border: .4px solid rgb(188, 188, 188);
     border-radius: 10px;
     padding: 10px;
-    /* padding-block-end: 50px; */
+    /* width: 220px; */
+    break-inside: avoid;
+    margin-bottom: 10px;
     height: max-content;
 }
 
