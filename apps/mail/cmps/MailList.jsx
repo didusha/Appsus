@@ -7,9 +7,15 @@ export function MailList({ mails, onRemoveMail, onReadMail }) {
     const navigate = useNavigate()
 
 
-    function onClickMail(mailId){
-        navigate(`/mail/${mailId}`)
-        onReadMail(mailId)
+    function onClickMail(mail) {
+        navigate(`/mail/${mail.id}`)
+        const isRead = { isRead: true }
+        onReadMail(mail.id, isRead)
+    }
+
+    function onToggleMail(mail) {
+        const isRead = { ...mail, isRead: !mail.isRead }
+        onReadMail(mail.id, isRead)
     }
 
     const mailStatus = ""
@@ -18,23 +24,25 @@ export function MailList({ mails, onRemoveMail, onReadMail }) {
         <section className='mail-list'>
             <ul>
                 {mails.map(mail => (
-                    <li key={mail.id} className={`mail-item ${mailStatus}`} onClick={()=>onClickMail(mail.id)}>
-                        <MailPreview mail={mail} />
-                        <section className="btn-mail-preview">
+                    <li key={mail.id} className={`mail-item ${mail.isRead ? 'read' : ''}`} >
+                        <div  onClick={() => onClickMail(mail)}>
+                            <MailPreview mail={mail} />
+                        </div>
+                        <div className="btn-mail-preview">
                             <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
-                            <button onClick={() => onReadMail(mail.id)}><i className="fa-regular fa-envelope"></i></button>
-                        </section>
+                            <button onClick={() => onToggleMail(mail)}>{mail.isRead ? <i className="fa-regular fa-envelope-open"></i> : <i className="fa-regular fa-envelope"></i>}</button>
+                        </div>
                     </li>
                 ))}
+
             </ul>
         </section>
     )
 }
 
-{/* <i class="fa-regular fa-envelope-open"></i> */}      //opened mail
 
-    // const listAttrs = {
-    //     className: 'mail-list container',
-    //     title: 'Hello MailList!',
-    //     onClick: () => { console.log('List Clicked!') }
-    // }
+// const listAttrs = {
+//     className: 'mail-list container',
+//     title: 'Hello MailList!',
+//     onClick: () => { console.log('List Clicked!') }
+// }

@@ -14,6 +14,8 @@ export const mailService = {
     getFilterFromSearchParams
 }
 
+const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
+
 function query(filterBy = {}) {
     return storageService.query(MAIL_KEY)
         .then(mails => {
@@ -135,17 +137,45 @@ function _createMails() {
                 removedAt: null,
                 from: 'teamlead@company.com',
                 to: 'user@appsus.com',
-            }
+            },
+            {
+                id: 'm1',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+                subject: 'Meeting Recap',
+                body: 'Hey team, just recapping our discussion from today. We agreed to finalize the design specs by Friday, and then move to testing. Please update your progress before Thursday noon. Let me know if anything is unclear.',
+                isRead: false,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
+                removedAt: null,
+                from: 'dana@company.com',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'm2',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
+                subject: 'Flight Details',
+                body: 'Your flight is confirmed for next week. Departure from JFK at 9:30 AM. Arrival at LAX is expected at 12:15 PM local time. Please check in online and bring your ID and boarding pass.',
+                isRead: true,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
+                removedAt: null,
+                from: 'noreply@airline.com',
+                to: 'user@appsus.com'
+            },
+            {
+                id: 'm3',
+                createdAt: Date.now() - 1000 * 60 * 60 * 24 * 5,
+                subject: 'Invoice Attached',
+                body: 'Hello, please find attached the invoice for your latest purchase. If you have any questions or believe there’s an error in the billing, contact us within 7 business days. Thank you for choosing our service.',
+                isRead: false,
+                sentAt: Date.now() - 1000 * 60 * 60 * 24 * 5,
+                removedAt: null,
+                from: 'billing@store.com',
+                to: 'user@appsus.com'
+            },
+
 
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
     }
-}
-
-function _createMail() {
-    const mail = getEmptyMail()
-    mail.id = utilService.makeId()
-    return mail
 }
 
 function getFilterFromSearchParams(searchParams) {
@@ -168,24 +198,21 @@ function _setNextPrevMailId(mail) {
     })
 }
 
-function readMail(mailId) {
-    get(mailId)
-        .then(prevMails => prevMails.isRead = true)
-}
-
-
-const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
-const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
-
-
-
-function _createMail(subject, createdat = 250) {
-    const mail = getEmptyMail(subject, createdat)
-    mail.id = utilService.makeId()
-    return mail
-}
-
-
-function getEmptyMail(subject = '', createdAt = '') {
+function getEmptyMail(subject = '', createdAt = new Date()) {
     return { subject, createdAt }
 }
+
+
+// const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
+
+// function _createMail(subject, createdat = 250) {
+//     const mail = getEmptyMail(subject, createdat)
+//     mail.id = utilService.makeId()
+//     return mail
+// }
+
+// function _createMail() {
+//     const mail = getEmptyMail()
+//     mail.id = utilService.makeId()
+//     return mail
+// }
