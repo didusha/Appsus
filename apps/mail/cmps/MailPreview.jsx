@@ -8,7 +8,7 @@ export function MailPreview({ mail, onStarMail }) {
         onStarMail(mail.id, isStarred)
     }
 
-    const { subject, from, createdAt, body } = mail
+    const { subject, createdAt, body } = mail
 
     const senderMail = mailService.checkSender(mail)
     const sender = utilService.showtSenderName(senderMail)
