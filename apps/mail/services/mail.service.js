@@ -25,7 +25,7 @@ function query(filterBy = {}) {
                 mails = mails.filter(mail => regExp.test(mail.from) || regExp.test(mail.subject) || regExp.test(mail.body))
             }
             if (filterBy.folder === "inbox") {
-                mails = mails.filter(mail => mail.to === loggedinUser.email && 
+                mails = mails.filter(mail => mail.to === loggedinUser.email &&
                     mail.removedAt === null &&
                     mail.from !== loggedinUser.email)
             }
@@ -64,20 +64,21 @@ function save(mail) {
     }
 }
 
-function getEmptyMail(createdAt = Date.now(), from ='user@appsus.com') {
-    return {
-        id: '',
+function getEmptyMail(createdAt = Date.now()) {
+    const mail = {
         createdAt,
         subject: '',
         body: '',
         isRead: false,
         sentAt: null,
         removedAt: null,
-        from: from,
+        from: 'user@appsus.com',
         to: '',
         isStarred: false,
         updatedAt: null,
     }
+    console.log("🚀 ~ getEmptyMail ~ mail:", mail)
+    return mail
 }
 
 function getDefaultFilter() {

@@ -5,6 +5,7 @@
      flex-direction: column;
      align-items: center;
      background-color: var(--color-bg--2);
+     padding-right: 10px;;
  }
 
  .mail-folder-list p:first-child {
@@ -23,6 +24,7 @@
      padding: 5px;
      width: 100%;
      box-sizing: border-box;
+     margin-block: 7px;
  }
 
  .mail-folder-list i {
