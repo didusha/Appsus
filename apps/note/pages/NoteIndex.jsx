@@ -12,6 +12,7 @@ export function NoteIndex() {
 
     const [notes, setNotes] = useState(null)
     const [isNoteEdit, setIsNoteEdit] = useState(false)
+    const [isAdding, setIsAdding] = useState(false)
 
     useEffect(() => {
         loadNotes()
@@ -45,8 +46,9 @@ export function NoteIndex() {
     if (!notes) return <div>loading...</div>
     return (
         <section className="notes-index">
-            {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} />}
-            <NoteAdd onSaveNote={onSaveNote}/>
+            {isNoteEdit && <NoteEdit setIsNoteEdit={setIsNoteEdit} setIsAdding={setIsAdding}/>}
+            {!isAdding && <div className="txt-input"><input type="text" placeholder="Take a note..." onClick={() => setIsAdding(true)}/></div>}
+            {isAdding && <NoteAdd onSaveNote={onSaveNote} setIsAdding={setIsAdding}/>}
             <NoteList onRemoveNote={onRemoveNote} notes={notes} setIsNoteEdit={setIsNoteEdit} />
         </section>
     )

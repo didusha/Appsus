@@ -3,13 +3,12 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 
 const { useState } = React
 
-export function NoteAdd({onSaveNote}) {
+export function NoteAdd({ onSaveNote, setIsAdding }) {
     const [noteToAdd, setNoteToAdd] = useState(noteService.createNote())
 
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
-
         setNoteToAdd(prevNote => ({ ...prevNote, info: { ...prevNote.info, [field]: value } }))
     }
 
@@ -24,13 +23,20 @@ export function NoteAdd({onSaveNote}) {
                 console.log('Problem adding note:', err)
                 showErrorMsg('Problem adding note!')
             })
+            .finally(() => setIsAdding(false))
     }
 
     const { info } = noteToAdd
     return (
         <form className="note-add" onSubmit={onAddNote}>
-            <input className="txt-add-input" name="txt" value={info.txt} onChange={handleChange} type="text" placeholder="Take a note..." />
-            <button type="submit">close</button>
+            <h2>Title</h2>
+            <input className="txt-add-input"
+                name="txt"
+                value={info.txt}
+                onChange={handleChange}
+                type="text"
+                placeholder="Take a note..." />
+            <button type="submit" >close</button>
         </form>
     )
 }

@@ -52,7 +52,7 @@ function createNote(txt = '', type = 'NoteTxt') {
         type,
         isPinned: true,
         style: {
-            backgroundColor: 'white'
+            backgroundColor: '#00d'
         },
         info: {
             txt
@@ -112,6 +112,9 @@ function _createNotes() {
                 createdAt: 1112224,
                 type: 'NoteTodos',
                 isPinned: false,
+                style: {
+                    backgroundColor: '#00d'
+                },
                 info: {
                     title: 'Get my stuff together',
                     todos: [
