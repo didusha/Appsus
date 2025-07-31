@@ -11,3 +11,7 @@
 .side-filter button:hover{
     background-color: rgb(255, 255, 205);
 }
+
+.search-input{
+    z-index: 1;
+}
