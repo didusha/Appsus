@@ -19,12 +19,8 @@ function query(filterBy = {}) {
         .then(notes => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                notes = notes.filter(note => regExp.test(note.vendor))
+                notes = notes.filter(note => regExp.test(note.info.txt))
             }
-            if (filterBy.minSpeed) {
-                notes = notes.filter(note => note.speed >= filterBy.minSpeed)
-            }
-            console.log(' notes:', notes)
             return notes
         })
 }

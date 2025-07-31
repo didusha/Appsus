@@ -23,11 +23,11 @@ export function NoteIndex() {
 
     useEffect(() => {
         setSearchParams(utilService.getTruthyValues(filterBy))
-        loadNotes()
+        loadNotes(filterBy)
     }, [filterBy])
 
-    function loadNotes() {
-        noteService.query()
+    function loadNotes(filterBy) {
+        noteService.query(filterBy)
             .then(notes => setNotes(notes))
             .catch(err => {
                 console.log('err:', err)

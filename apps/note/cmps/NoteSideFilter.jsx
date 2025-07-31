@@ -22,21 +22,6 @@ export function NoteSideFilter({ filterBy, onSetFilterBy }) {
     const { txt } = filterByToEdit
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         <section className="side-filter">
             <button onClick={() => setIsSearch(isSearch => !isSearch)}>
