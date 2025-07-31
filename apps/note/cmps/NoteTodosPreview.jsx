@@ -11,6 +11,7 @@ export function NoteTodosPreview({ note }) {
             {note.info.todos.map((todo,idx) => 
                 <li key={idx}>{todo.txt}</li>
             )}
+            <input type="text" />
         </article>
     )
 }
