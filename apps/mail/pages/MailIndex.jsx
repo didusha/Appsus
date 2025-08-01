@@ -8,7 +8,7 @@ import { MailFolderList } from "../cmps/MailFolderList.jsx"
 
 
 const { useState, useEffect } = React
-const { Link, Outlet, useSearchParams } = ReactRouterDOM
+const { Outlet, useSearchParams } = ReactRouterDOM
 
 
 export function MailIndex() {
@@ -52,8 +52,9 @@ export function MailIndex() {
     }
 
     function sentMail(newMail) {
-        setMails([...mails, newMail])
-        setMails(prevMails => prevMails.filter(mail => { mail.id !== newMail.id}))
+        const idx = mails.findIndex(mail => mail.id === newMail.id)
+        if (idx !== -1) loadMails()
+        else setMails(prevMails => [...prevMails, newMail])
     }
 
     function onReadMail(mailId, isRead) {

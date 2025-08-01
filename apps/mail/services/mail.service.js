@@ -30,16 +30,16 @@ function query(filterBy = {}) {
                     mail.from !== loggedinUser.email)
             }
             if (filterBy.folder === "sent") {
-                mails = mails.filter(mail => mail.to !== loggedinUser.email)
+                mails = mails.filter(mail => mail.to !== loggedinUser.email && mail.sentAt && mail.removedAt === null && !mail.isDraft )
             }
             if (filterBy.folder === "trash") {
                 mails = mails.filter(mail => mail.removedAt !== null)
             }
             if (filterBy.folder === "draft") {
-                mails = mails.filter(mail => mail.createdAt && mail.sentAt === null)
+                mails = mails.filter(mail => mail.sentAt === null && mail.removedAt === null && mail.isDraft)
             }
             if (filterBy.folder === "starred") {
-                mails = mails.filter(mail => mail.isStarred)
+                mails = mails.filter(mail => mail.isStarred && mail.removedAt === null)
             }
             return mails
         })
@@ -65,8 +65,6 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail.sentAt = new Date()
-        mail.removedAt = null
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -75,16 +73,15 @@ function getEmptyMail(createdAt = Date.now()) {
     const mail = {
         createdAt,
         subject: '',
-        body: '',
+        body: '\n\nBest Regards,\nCoding academy',
         isRead: false,
         sentAt: null,
         removedAt: null,
         from: 'user@appsus.com',
         to: '',
         isStarred: false,
-        updatedAt: null,
+        isDraft: null,
     }
-    console.log("🚀 ~ getEmptyMail ~ mail:", mail)
     return mail
 }
 

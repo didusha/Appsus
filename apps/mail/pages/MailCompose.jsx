@@ -14,7 +14,7 @@ export function MailCompose() {
 
     useEffect(() => {
         if (mailId) loadMail()
-    }, [])
+    }, [mailId])
 
     function loadMail() {
         mailService.get(mailId)
@@ -39,8 +39,9 @@ export function MailCompose() {
     }
 
     function onSaveMail(ev) {
-        console.log("onSaveMail")
         ev.preventDefault()
+        mailToEdit.sentAt = Date.now()
+        mailToEdit.isDraft = false
         mailService.save(mailToEdit)
             .then(mail => sentMail(mail))
             .then(navigate('/mail'))
@@ -49,20 +50,34 @@ export function MailCompose() {
                 showErrorMsg('Cannot save mail')
             })
     }
-    
+
+    function onDraftMail(ev) {
+        ev.preventDefault()
+        if (!mailToEdit.to.length && !mailToEdit.subject.length)
+            return navigate('/mail')
+        mailToEdit.isDraft = true
+        mailService.save(mailToEdit)
+            .then(mail => sentMail(mail))
+            .then(navigate('/mail'))
+            .catch(err => {
+                console.log('Cannot save mail:', err)
+                showErrorMsg('Cannot save mail')
+            })
+    }
+
     const { subject, to, body } = mailToEdit
-    const signature = "Best Regards,\nCoding academy"
+    // const signature = "Best Regards,\nCoding academy"
     return (
         <section className="mail-compose">
             <div className="mail-compose-header">
                 <span>New Message</span>
-                <button type="button" onClick={() => navigate('/mail/')}>x</button>
+                <button type="button" onClick={onDraftMail}>x</button>
             </div>
             <form onSubmit={onSaveMail}>
                 {/* <input value={from} placeholder="From" onChange={handleChange} type="text" name="from" className="from" /> */}
                 <input required value={to} placeholder="To" onChange={handleChange} type="text" name="to" className="to" />
                 <input required value={subject} onChange={handleChange} type="text" name="subject" placeholder="Subject" className="subject" />
-                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} className="body" defaultValue={signature}></textarea>
+                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} className="body"></textarea>
                 <div>
                     <button className="btn-send-mail">Send</button>
                 </div>

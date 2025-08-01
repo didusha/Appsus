@@ -8,6 +8,9 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail }) {
 
 
     function onClickMail(mail) {
+        if(!mail.sentAt){
+            return navigate(`/mail/compose/${mail.id}`)
+        }
         navigate(`/mail/${mail.id}`)
         const isRead = { isRead: true }
         onReadMail(mail.id, isRead)
