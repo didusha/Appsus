@@ -7,11 +7,7 @@ const { useState } = React
 
 export function MailCompose() {
 
-
     const [mailToEdit, setMailToEdit] = useState(mailService.getEmptyMail())
-    console.log("🚀 ~ MailCompose ~ mailToEdit:", mailToEdit)
-
-
     const { sentMail } = useOutletContext()
     const navigate = useNavigate()
     const { mailId } = useParams()
@@ -43,19 +39,19 @@ export function MailCompose() {
     }
 
     function onSaveMail(ev) {
+        console.log("onSaveMail")
         ev.preventDefault()
         mailService.save(mailToEdit)
             .then(mail => sentMail(mail))
             .then(navigate('/mail'))
             .catch(err => {
-                console.log('Cannot save mail!:', err)
-                showErrorMsg('Cannot save mail!')
+                console.log('Cannot save mail:', err)
+                showErrorMsg('Cannot save mail')
             })
     }
-
-    const { subject, to, from, body } = mailToEdit
+    
+    const { subject, to, body } = mailToEdit
     const signature = "Best Regards,\nCoding academy"
-
     return (
         <section className="mail-compose">
             <div className="mail-compose-header">
@@ -66,8 +62,7 @@ export function MailCompose() {
                 {/* <input value={from} placeholder="From" onChange={handleChange} type="text" name="from" className="from" /> */}
                 <input required value={to} placeholder="To" onChange={handleChange} type="text" name="to" className="to" />
                 <input required value={subject} onChange={handleChange} type="text" name="subject" placeholder="Subject" className="subject" />
-                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} className="body" defaultValue= {signature}></textarea>
-
+                <textarea required name="body" cols='30' rows='10' value={body} onChange={handleChange} className="body" defaultValue={signature}></textarea>
                 <div>
                     <button className="btn-send-mail">Send</button>
                 </div>

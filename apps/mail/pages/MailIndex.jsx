@@ -53,6 +53,7 @@ export function MailIndex() {
 
     function sentMail(newMail) {
         setMails([...mails, newMail])
+        setMails(prevMails => prevMails.filter(mail => { mail.id !== newMail.id}))
     }
 
     function onReadMail(mailId, isRead) {
