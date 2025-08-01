@@ -1,15 +1,15 @@
 :root {
-    --bg1: rgb(212, 212, 212);
+    /* --bg1: rgb(212, 212, 212);
     --bg2: rgb(50, 160, 204);
     --bg3: rgb(89, 134, 206);
     
     --color1: rgb(26, 115, 232);
     --color2: rgb(24, 128, 56);
-    --color3: rgb(197, 34, 31);
+    --color3: rgb(197, 34, 31); */
 
-    --gray1: #aaa;
+    /* --gray1: #aaa;
     --gray2: #888;
-    --gray3: #626262;
+    --gray3: #626262; */
 
 
     /* mail */
@@ -17,8 +17,8 @@
     --color-bg: #fefefe;
     --color-bg--1: #f1f5fb;
     --color-bg--2: #f8fafd;
+    --color--bg--3: #d3e3fd;
 
-
-    --font-size: 14px;
-    --line-height: 20px;
+    --font-size: 1rem;
+    /* --line-height: 20px; */
 }

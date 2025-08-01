@@ -6,7 +6,6 @@
     z-index: 1;
     background-color: var(--color-bg);
     border: 1px solid #ccc;
-    border-radius: 8px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -14,9 +13,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ddd;
-    padding: 5px;
-    background-color: #f2f2f2;
+    padding: 7px;
+    background-color: var(--color-bg--1);
 }
 
 .mail-compose-header span {
@@ -58,5 +56,11 @@ button:focus {
 .mail-compose .subject {
     border-bottom: 1px solid #ddd;
     vertical-align: middle;
+    padding: 5px;
 }
 
+.mail-compose .to:active,
+.mail-compose .from:active,
+.mail-compose .subject:active{
+    background-color: transparent;
+}
