@@ -1,18 +1,12 @@
+import { mailService } from "../services/mail.service.js"
+
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 const { Link } = ReactRouterDOM
 
-import { mailService } from "../services/mail.service.js"
-// import { showErrorMsg } from "../../../services/event-bus.service.js"
-
 export function MailDetails() {
 
     const [mail, setMail] = useState(null)
-    // const [isLoading, setIsLoading] = useState(true)
-    // const [isLoadingReview, setIsLoadingReview] = useState(false)
-    // const [isShowReviewModal, setIsShowReviewModal] = useState(null)
-
-
     const params = useParams()
     const navigate = useNavigate()
 
@@ -22,7 +16,7 @@ export function MailDetails() {
 
     function loadMail() {
         mailService.get(params.mailId)
-            .then(mail => {setMail(mail)})
+            .then(mail => { setMail(mail) })
             .catch(err => console.log('err:', err))
     }
 
@@ -30,45 +24,32 @@ export function MailDetails() {
         navigate('/mail')
     }
 
+    function onRemoveMail(mailId) {
+        mailService.remove(mailId)
+            .then(() => navigate('/mail'))
+    }
+
     if (!mail) return <div>Loading..</div>
-    const { subject, body } = mail
+    // const { subject, body } = mail
     return (
         <article className='mail-details'>
 
-            <h3>{subject}</h3>
-            <p>{body}</p>
-
-            <button onClick={onBack}>Back</button>
-            <section>
-                <button ><Link to={`/mail/${mail.prevMailId}`}>Prev </Link></button>
-                <button ><Link to={`/mail/${mail.nextMailId}`}>Next </Link></button>
+            <div className="mail-actions">
+                <button><Link to={`/mail/${mail.prevMailId}`}>⬅ Prev </Link></button>
+                <button><Link to={`/mail/${mail.nextMailId}`}>Next ➡ </Link></button>
+            </div>
+            <header className="mail-header">
+                <div className="mail-header-details">
+                    <h2 className="mail-subject">{mail.subject}</h2>
+                    <p className="mail-from"><strong>From:</strong> {mail.from}</p>
+                    <p className="mail-to"><strong>To:</strong> {mail.to}</p>
+                    <p className="mail-date">{new Date(mail.sentAt).toLocaleString()}</p>
+                </div>
+                <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
+            </header>
+            <section className="mail-body">
+                <p>{mail.body}</p>
             </section>
         </article>
     )
 }
-
-{/* <nav className='mail-details-nav'>
-                <Link to={`/mail/${mail.prevMailId}`}>
-                    <button><i className="fa-solid fa-arrow-left"></i></button>
-                </Link>
-                <Link to={`/mail/${mail.nextMailId}`}>
-                    <button><i className="fa-solid fa-arrow-right"></i></button>
-                </Link>
-            </nav> */}
-{/* <h2>{subject}</h2>
-            <p>{body}</p> */}
-
-//             <p className={mail.listPrice.amount > 200 ? 'high-price' : 'low-price'}>
-//     <span className='bold-txt'>Price: </span>
-//     {mail.listPrice.amount} {mail.listPrice.currencyCode}
-// </p>
-// <p>
-//     <span className='bold-txt'>Language:</span>
-//     {mail.language}
-// </p>
-// {mail.categories && <p>
-//     <span className='bold-txt'>Categoric:</span> {mail.categories}
-// </p>}
-// {mail.authors && <p>
-//     <span className='bold-txt'>Authors:</span> {mail.authors}
-// </p>}

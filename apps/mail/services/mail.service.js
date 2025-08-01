@@ -30,7 +30,7 @@ function query(filterBy = {}) {
                     mail.from !== loggedinUser.email)
             }
             if (filterBy.folder === "sent") {
-                mails = mails.filter(mail => mail.to !== loggedinUser.email && mail.sentAt && mail.removedAt === null && !mail.isDraft )
+                mails = mails.filter(mail => mail.to !== loggedinUser.email && mail.sentAt && mail.removedAt === null && !mail.isDraft)
             }
             if (filterBy.folder === "trash") {
                 mails = mails.filter(mail => mail.removedAt !== null)
@@ -99,6 +99,266 @@ function _createMails() {
         mails = [
             {
                 id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'alice@example.com',
+                subject: 'Welcome to our platform!',
+                body: 'Thanks for signing up. We’re excited to have you on board. Feel free to explore and let us know if you have any questions about the features or interface.',
+                sentAt: 1722465600000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722462000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'bob@example.net',
+                subject: 'Project Update',
+                body: 'The project is progressing well. We’ve completed the initial phase and are moving into the review stage. Feedback is appreciated before we finalize everything.',
+                sentAt: null,
+                draftAt: 1722450000000,
+                removedAt: null,
+                createdAt: 1722448800000,
+                isStarred: false,
+                folder: 'draft'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'claire@example.org',
+                subject: 'Weekly Summary',
+                body: 'Here’s a quick summary of this week’s work: new UI prototypes were created, several bugs were resolved, and we’re on track for the next sprint.',
+                sentAt: 1722445000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722443000000,
+                isStarred: false,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'david@example.com',
+                subject: 'Invoice for July',
+                body: 'Please find the attached invoice for the services rendered in July. Let me know if anything looks off or if you require a revised version.',
+                sentAt: 1722430000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722426000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'emma@example.net',
+                subject: 'Reminder: Team Meeting Tomorrow',
+                body: 'Just a reminder about our team meeting scheduled for tomorrow at 10 AM. We’ll be discussing the quarterly goals and new team assignments.',
+                sentAt: 1722400000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722398000000,
+                isStarred: false,
+                folder: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'frank@example.org',
+                subject: 'Draft: Feature Proposal',
+                body: 'I started writing up a proposal for the new feature we discussed. It still needs polish, but the basic flow and user benefit cases are outlined.',
+                sentAt: null,
+                draftAt: 1722380000000,
+                removedAt: null,
+                createdAt: 1722378000000,
+                isStarred: false,
+                folder: 'draft'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'grace@example.com',
+                subject: 'Deleted: Vacation Plans',
+                body: 'Hey Grace, just wanted to share some vacation plans and get your input. Thinking about Iceland or New Zealand this year, what do you think?',
+                sentAt: 1722340000000,
+                draftAt: null,
+                removedAt: 1722346000000,
+                createdAt: 1722339000000,
+                isStarred: false,
+                folder: 'trash'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'harry@example.net',
+                subject: 'Request for Feedback',
+                body: 'We’d appreciate your feedback on the latest dashboard design. What do you like, dislike, or wish was there? Your input really helps.',
+                sentAt: 1722335000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722334000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'isabelle@example.org',
+                subject: 'Job Offer Update',
+                body: 'Following our recent discussions, we’re happy to extend an updated job offer with revised terms. Please review and let us know your decision.',
+                sentAt: 1722300000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722298000000,
+                isStarred: false,
+                folder: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'james@example.com',
+                subject: 'Server Maintenance Notice',
+                body: 'We’ll be performing routine server maintenance this weekend. Expect some downtime from 2 AM to 5 AM Sunday. Let us know if you have concerns.',
+                sentAt: 1722280000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722278000000,
+                isStarred: false,
+                folder: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'kate@example.net',
+                subject: 'Thanks for attending the workshop',
+                body: 'We appreciate your time and contribution to the design workshop. Your insights sparked some great discussions and follow-up ideas.',
+                sentAt: 1722260000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722258000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'leo@example.org',
+                subject: 'Draft: Quarterly Report',
+                body: 'Started assembling our quarterly report. Let me know if the data charts are clear enough and if you’d like to add a summary or note.',
+                sentAt: null,
+                draftAt: 1722250000000,
+                removedAt: null,
+                createdAt: 1722248000000,
+                isStarred: false,
+                folder: 'draft'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'mia@example.com',
+                subject: 'Product Launch Recap',
+                body: 'The launch went smoothly thanks to everyone’s hard work. Customer feedback has been positive so far, and we’re seeing increased traffic.',
+                sentAt: 1722230000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722228000000,
+                isStarred: false,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'nathan@example.net',
+                subject: 'Support Request Update',
+                body: 'We’ve reviewed your support ticket and determined it was a configuration issue. We’ve corrected it and everything should be running fine now.',
+                sentAt: 1722210000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722208000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'olivia@example.org',
+                subject: 'Meeting Agenda - Next Week',
+                body: 'Attached is the proposed agenda for next week’s meeting. Feel free to suggest edits or bring new topics to include on the discussion list.',
+                sentAt: 1722190000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722188000000,
+                isStarred: false,
+                folder: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'peter@example.com',
+                subject: 'Deleted: Brainstorm Notes',
+                body: 'Just some early brainstorm notes I wrote down. Might not be important, but wanted to share them in case something useful stands out.',
+                sentAt: null,
+                draftAt: null,
+                removedAt: 1722178000000,
+                createdAt: 1722176000000,
+                isStarred: false,
+                folder: 'trash'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'quinn@example.net',
+                subject: 'Follow-Up from Demo',
+                body: 'Thanks for joining the product demo today. Let me know if you have more questions, or want a follow-up walkthrough of any specific feature.',
+                sentAt: 1722160000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722158000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'rachel@example.org',
+                subject: 'Team Building Activity Ideas',
+                body: 'Looking for input on fun team building activities. Let’s come up with something outdoors, engaging, and inclusive for all teams involved.',
+                sentAt: null,
+                draftAt: 1722140000000,
+                removedAt: null,
+                createdAt: 1722138000000,
+                isStarred: false,
+                folder: 'draft'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'steve@example.com',
+                subject: 'Customer Survey Results',
+                body: 'We’ve compiled the results of the recent customer survey. Key takeaways include improved satisfaction with onboarding and feature documentation.',
+                sentAt: 1722120000000,
+                draftAt: null,
+                removedAt: null,
+                createdAt: 1722118000000,
+                isStarred: true,
+                folder: 'sent'
+            },
+            {
+                id: utilService.makeId(),
+                from: 'user@appsus.com',
+                to: 'tina@example.net',
+                subject: 'Cancelled: Marketing Sync',
+                body: 'The marketing sync originally planned for this Thursday has been cancelled due to scheduling conflicts. We’ll reschedule for next week.',
+                sentAt: null,
+                draftAt: null,
+                removedAt: 1722100000000,
+                createdAt: 1722098000000,
+                isStarred: false,
+                folder: 'trash'
+            },
+            {
+                id: utilService.makeId(),
                 createdAt: 1551133930500,
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
@@ -110,7 +370,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                createdAt: Date.now(), // היום
+                createdAt: Date.now(),
                 subject: 'Hey there!',
                 body: 'Just checking in to see how you are.',
                 isRead: false,
@@ -132,7 +392,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                createdAt: new Date('2023-07-24').getTime(), // מעל שנה
+                createdAt: new Date('2023-07-24').getTime(),
                 subject: 'Happy Birthday!',
                 body: 'Wishing you all the best on your special day.',
                 isRead: false,
@@ -143,7 +403,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                createdAt: new Date('2022-03-01').getTime(), // מעל שנה
+                createdAt: new Date('2022-03-01').getTime(),
                 subject: 'Old Reminder',
                 body: 'Don’t forget to file your taxes.',
                 isRead: true,
@@ -154,7 +414,7 @@ function _createMails() {
             },
             {
                 id: utilService.makeId(),
-                createdAt: new Date('2025-07-01').getTime(), // לפני חודש
+                createdAt: new Date('2025-07-01').getTime(),
                 subject: 'Meeting follow-up',
                 body: 'Here’s what we discussed yesterday...',
                 isRead: true,
@@ -164,7 +424,7 @@ function _createMails() {
                 to: 'user@appsus.com',
             },
             {
-                id: 'm1',
+                id: utilService.makeId(),
                 createdAt: Date.now() - 1000 * 60 * 60 * 24 * 1,
                 subject: 'Meeting Recap',
                 body: 'Hey team, just recapping our discussion from today. We agreed to finalize the design specs by Friday, and then move to testing. Please update your progress before Thursday noon. Let me know if anything is unclear.',
@@ -175,7 +435,7 @@ function _createMails() {
                 to: 'user@appsus.com'
             },
             {
-                id: 'm2',
+                id: utilService.makeId(),
                 createdAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
                 subject: 'Flight Details',
                 body: 'Your flight is confirmed for next week. Departure from JFK at 9:30 AM. Arrival at LAX is expected at 12:15 PM local time. Please check in online and bring your ID and boarding pass.',
@@ -186,7 +446,7 @@ function _createMails() {
                 to: 'user@appsus.com'
             },
             {
-                id: 'm3',
+                id: utilService.makeId(),
                 createdAt: Date.now() - 1000 * 60 * 60 * 24 * 5,
                 subject: 'Invoice Attached',
                 body: 'Hello, please find attached the invoice for your latest purchase. If you have any questions or believe there’s an error in the billing, contact us within 7 business days. Thank you for choosing our service.',
@@ -196,8 +456,6 @@ function _createMails() {
                 from: 'billing@store.com',
                 to: 'user@appsus.com'
             },
-
-
         ]
         utilService.saveToStorage(MAIL_KEY, mails)
     }
@@ -222,10 +480,3 @@ function _setNextPrevMailId(mail) {
         return mail
     })
 }
-
-// function getEmptyMail(subject = '', createdAt = new Date()) {
-//     return { subject, createdAt }
-// }
-
-
-// const mail = { id: 'e101', createdAt: 1551133930500, subject: 'Miss you!', body: 'Would love to catch up sometimes', isRead: false, sentAt: 1551133930594, removedAt: null, from: 'momo@momo.com', to: 'user@appsus.com' }
