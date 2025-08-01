@@ -6,9 +6,8 @@
  }
 
  .serach-input {
-     /* 1.5rem = 24px */
      border-radius: 1.5rem;
      background-color: #E9EEF6;
      width: 80%;
-     padding: 14px;
+     padding: .875rem;
  }
