@@ -24,6 +24,7 @@
 @import '../css/apps/mail/MailPreview.css';
 @import '../css/apps/mail/MailCompose.css';
 @import '../css/apps/mail/MailFolderList.css';
+@import '../css/apps/mail/mq-mail.css';
 
 /* Notes componanets */
 @import '../css/apps/note/NoteEdit.css';

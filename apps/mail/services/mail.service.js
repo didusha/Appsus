@@ -26,22 +26,29 @@ function query(filterBy = {}) {
             }
             if (filterBy.folder === "inbox") {
                 mails = mails.filter(mail => mail.to === loggedinUser.email &&
-                    mail.removedAt === null &&
+                    mail.removedAt === null && !mail.isDraft &&
                     mail.from !== loggedinUser.email)
             }
-            if (filterBy.folder === "sent") {
+            else if (filterBy.folder === "sent") {
                 mails = mails.filter(mail => mail.to !== loggedinUser.email && mail.sentAt && mail.removedAt === null && !mail.isDraft)
             }
-            if (filterBy.folder === "trash") {
+            else if (filterBy.folder === "trash") {
                 mails = mails.filter(mail => mail.removedAt !== null)
             }
-            if (filterBy.folder === "draft") {
+            else if (filterBy.folder === "draft") {
                 mails = mails.filter(mail => mail.sentAt === null && mail.removedAt === null && mail.isDraft)
             }
-            if (filterBy.folder === "starred") {
+            else if (filterBy.folder === "starred") {
                 mails = mails.filter(mail => mail.isStarred && mail.removedAt === null)
             }
 
+            if (filterBy.sortRead === "read") {
+                mails = mails.filter(mail => mail.isRead)
+            }
+            else if (filterBy.sortRead === "unRead") {
+                mails = mails.filter(mail => !mail.isRead)
+            }
+            
             if (filterBy.sortField) {
                 if (filterBy.sortField === 'createdAt') {
                     mails.sort((mail1, mail2) => (mail1[filterBy.sortField] - mail2[filterBy.sortField]) * filterBy.sortDir)
@@ -474,11 +481,14 @@ function getFilterFromSearchParams(searchParams) {
     const folder = searchParams.get('folder') || 'inbox'
     const sortField = searchParams.get('sortField') || 'createdAt'
     const sortDir = searchParams.get('sortDir') || -1
+    const sortRead = searchParams.get('') 
+    
     return {
         txt,
         folder,
         sortField,
         sortDir,
+        sortRead,
     }
 }
 
