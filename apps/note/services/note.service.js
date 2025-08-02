@@ -77,7 +77,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#ffbbdf'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -89,7 +89,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#fffcaa'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!2'
@@ -105,7 +105,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#c4ffb9'
                 }
             },
             {
@@ -114,7 +114,7 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#e3b7ff'
                 },
                 info: {
                     title: 'Get my stuff together',
@@ -123,7 +123,20 @@ function _createNotes() {
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
                 }
-            }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteVideo',
+                isPinned: false,
+                info: {
+                    url: "https://www.youtube.com/embed/Wq4MJ_-MpN4",
+                    title: 'Bali surfing'
+                },
+                style: {
+                    backgroundColor: '#bcedff'
+                }
+            },
         ]
 
         utilService.saveToStorage(NOTE_KEY, notes)

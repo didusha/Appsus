@@ -2,7 +2,6 @@
 @import './basics/vars.css';
 @import './basics/base.css';
 @import './basics/helpers.css';
-@import './basics/mq.css';
 
 
 /* Components */
@@ -33,3 +32,5 @@
 @import '../css/apps/note/NoteTodosPreview.css';
 @import '../css/apps/note/NoteSideFilter.css';
 @import '../css/apps/note/NoteImgPreview.css';
+@import '../css/apps/note/NoteVideoPreview.css';
+@import '../css/apps/note/NoteMq.css';
