@@ -1,6 +1,7 @@
 import { NoteTxtPreview } from "./NoteTxtPreview.jsx"
 import { NoteImgPreview } from "./NoteImgPreview.jsx"
 import { NoteTodosPreview } from "./NoteTodosPreview.jsx"
+import { NoteVideoPreview } from "./NoteVideoPreview.jsx"
 import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
@@ -52,6 +53,7 @@ function DynamicCmp(props) {
         NoteTxt: <NoteTxtPreview {...props} />,
         NoteImg: <NoteImgPreview {...props} />,
         NoteTodos: <NoteTodosPreview {...props} />,
+        NoteVideo: <NoteVideoPreview {...props} />
     }
 
     return <article>{dynamicCmps[props.cmpType]}</article>

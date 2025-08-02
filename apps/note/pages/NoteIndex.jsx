@@ -85,7 +85,7 @@ export function NoteIndex() {
     return (
         <section className="notes-index">
             <div className="side-filter-item">
-                <NoteSideFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
+                <NoteSideFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} notes={notes}/>
             </div>
             <div className="page-item">
 

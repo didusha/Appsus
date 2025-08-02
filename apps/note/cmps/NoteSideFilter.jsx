@@ -2,7 +2,7 @@ import { utilService } from "../../../services/util.service.js"
 
 const { useState, useEffect, useRef } = React
 
-export function NoteSideFilter({ filterBy, onSetFilterBy }) {
+export function NoteSideFilter({ filterBy, onSetFilterBy, notes }) {
     const [isSearch, setIsSearch] = useState(false)
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
@@ -22,6 +22,9 @@ export function NoteSideFilter({ filterBy, onSetFilterBy }) {
         setFilterByToEdit(prevFilter => ({ ...prevFilter, 'type': type }))
     }
 
+    function onShowAllNotes(){
+        setFilterByToEdit(prevFilter => prevFilter = '')
+    }
 
     const { txt } = filterByToEdit
 
@@ -47,6 +50,12 @@ export function NoteSideFilter({ filterBy, onSetFilterBy }) {
             </button>
             <button onClick={() => handleTypeChange('NoteTodos')}>
                 <i className="fa-solid fa-list"></i>
+            </button>
+            <button onClick={() => handleTypeChange('NoteVideo')}>
+                <i className="fa-solid fa-video"></i>
+            </button>
+            <button onClick={onShowAllNotes}>
+                <i className="fa-solid fa-xmark"></i>
             </button>
         </section>
     )

@@ -1,19 +1,25 @@
  /* home */
-.container{
+.home{
     margin-top: 90px;
     display: grid;
     justify-items: center;
-}
-
-.home-logo span{
-    font-size: 7em;
 }
 
 .home-txt{
     border: 1.5px solid black;
     border-radius: 50px;
     height: 3em;
-    width: 30em;
     margin-top: 20px;
     padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.home-logos {
+    height: 40px;
+    width: 40px;
+    transition: .3s;
+}
+
+.home-logos:hover {
+    transform: scale(1.2);
 }

@@ -1,9 +1,10 @@
 .todos-input{
     border: .5px solid black;
     width: 8.5em;
-    border-radius: 50px;
+    border-radius: 5px;
     padding-left: 8px;
     grid-row: 1;
+    margin-top: 5px;
 }
 
 .todo-container{
@@ -26,4 +27,8 @@
 
 .todo-title:hover{
     cursor: pointer;
+}
+
+.note-todos-preview ul{
+    margin-top: 20px;
 }

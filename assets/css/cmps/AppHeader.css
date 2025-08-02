@@ -30,7 +30,7 @@ nav a.active {
 }
 
 .p2 {
-    color: rgb(250, 227, 55);
+    color: rgb(255, 200, 50);
 }
 
 .s1 {
@@ -43,4 +43,14 @@ nav a.active {
 
 .s2 {
     color: rgb(215, 52, 52);
+}
+
+.logos {
+    height: 30px;
+    width: 30px;
+    transition: .3s;
+}
+
+.logos:hover {
+    transform: scale(1.2);
 }

@@ -1,6 +1,8 @@
 const { Link, NavLink } = ReactRouterDOM
+const { useState } = React
 
 export function AppHeader() {
+    const [isOpen, setIsOpen] = useState(false)
 
     return <header className="app-header">
         <Link to="/">
@@ -13,11 +15,25 @@ export function AppHeader() {
                 <span className="s2">s</span>
             </h3>
         </Link>
-        <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+        <div>
+        <div className="hamburger">
+            <img className="logos" onClick={() => setIsOpen(!isOpen)} src="../gallery/hamburger.svg" alt="" />
+        </div>
+        <nav className={`nav-logos ${isOpen ? 'open' : ''}`}>
+            <NavLink to="/" >
+                <img className="logos" src="../gallery/home.svg" alt="" />
+            </NavLink>
+            <NavLink to="/about">
+                <img className="logos" src="../gallery/about.svg" alt="" />
+            </NavLink>
+            <NavLink to="/mail">
+                <img className="logos" src="../gallery/mail.svg" alt="" />
+            </NavLink>
+            <NavLink to="/note">
+                <img className="logos" src="../gallery/keep.svg" alt="" />
+            </NavLink>
         </nav>
+        </div>
     </header>
 }
+

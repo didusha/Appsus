@@ -2,30 +2,33 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const NOTE_KEY = 'noteDB'
-_createNotes()
+_createTxtNotes()
 
 export const noteService = {
     query,
     get,
     remove,
     save,
-    createNote,
+    createTxtNote,
+    createImgNote,
+    createTodosNote,
+    createVideoNote,
     getDefaultFilter,
     getFilterFromSearchParams
 }
 
 function query(filterBy = {}) {
-    
+
     return storageService.query(NOTE_KEY)
-    .then(notes => {
-        if (filterBy.txt) {
-            const regExp = new RegExp(filterBy.txt, 'i')
-            notes = notes.filter(note => regExp.test(note.info.txt))
-        }
-        if (filterBy.type) {
+        .then(notes => {
+            if (filterBy.txt) {
+                const regExp = new RegExp(filterBy.txt, 'i')
+                notes = notes.filter(note => regExp.test(note.info.txt))
+            }
+            if (filterBy.type) {
                 notes = notes.filter(note => note.type === filterBy.type)
             }
-            
+
             return notes
         })
 }
@@ -47,13 +50,13 @@ function save(note) {
     }
 }
 
-function createNote(txt = '', type = 'NoteTxt') {
+function createTxtNote(txt = '', type = 'NoteTxt') {
     return {
         createdAt: Date.now(),
         type,
         isPinned: false,
         style: {
-            backgroundColor: 'white'
+            backgroundColor: '#fffcaa'
         },
         info: {
             txt
@@ -61,13 +64,57 @@ function createNote(txt = '', type = 'NoteTxt') {
     }
 }
 
+function createImgNote(url) {
+    return {
+        createdAt: Date.now(),
+        type: 'NoteImg',
+        isPinned: false,
+        info: {
+            url,
+            title: 'My picture'
+        },
+        style: {
+            backgroundColor: '#c4ffb9'
+        }
+    }
+}
+
+function createTodosNote(title = '') {
+    return {
+        createdAt: Date.now(),
+        type: 'NoteTodos',
+        isPinned: false,
+        style: {
+            backgroundColor: '#e3b7ff'
+        },
+        info: {
+            title,
+            todos: []
+        }
+    }
+}
+
+function createVideoNote(url) {
+    return {
+        createdAt: Date.now(),
+        type: 'NoteVideo',
+        isPinned: false,
+        info: {
+            url,
+            title: 'My video'
+        },
+        style: {
+            backgroundColor: '#c4ffb9'
+        }
+    }
+}
+
+
 function getDefaultFilter() {
     return { txt: '', type }
 }
 
-
-
-function _createNotes() {
+function _createTxtNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY)
     if (!notes || !notes.length) {
         notes = [
@@ -77,7 +124,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#ffbbdf'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!'
@@ -89,7 +136,7 @@ function _createNotes() {
                 type: 'NoteTxt',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#fffcaa'
                 },
                 info: {
                     txt: 'Fullstack Me Baby!2'
@@ -105,7 +152,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#c4ffb9'
                 }
             },
             {
@@ -114,7 +161,7 @@ function _createNotes() {
                 type: 'NoteTodos',
                 isPinned: false,
                 style: {
-                    backgroundColor: 'white'
+                    backgroundColor: '#e3b7ff'
                 },
                 info: {
                     title: 'Get my stuff together',
@@ -123,14 +170,27 @@ function _createNotes() {
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
                 }
-            }
+            },
+            {
+                id: utilService.makeId(),
+                createdAt: 1112223,
+                type: 'NoteVideo',
+                isPinned: false,
+                info: {
+                    url: "https://www.youtube.com/embed/8R21_KLHvQM",
+                    title: 'Bali surfing'
+                },
+                style: {
+                    backgroundColor: '#bcedff'
+                }
+            },
         ]
 
         utilService.saveToStorage(NOTE_KEY, notes)
     }
 }
 
-// function _createNote(vendor, speed = 250) {
+// function _createTxtNote(vendor, speed = 250) {
 //     const note = getEmptyNote(vendor, speed)
 //     note.id = makeId()
 //     return note
