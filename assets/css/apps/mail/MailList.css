@@ -1,32 +1,32 @@
  /* mail list */
 
  .mail-item {
-   border-bottom: 1px solid #eee;
+   border-bottom: 1px solid var(--color-border);
    cursor: pointer;
    position: relative;
    padding: 7px;
  }
 
  .mail-item:hover {
-   background-color: #f5f5f5;
+   background-color: var(--color-hover-li);
  }
 
  .mail-item.read {
-   background-color: white;
+   background-color: var(--color-bg);
    font-weight: normal !important;
-   color: #5f6368;
+   color: var(--color-bg-2);
    background-color: var(--color-bg--1);
  }
 
  .mail-item.read .from,
  .mail-item.read .subject {
    font-weight: normal !important;
-   color: #5f6368;
+   color: (--color-bg-2);
 
  }
 
  .mail-item.read:hover {
-   background-color: #f5f5f5;
+   background-color: var(--color-hover-li);
  }
 
  .mail-item .mail-content,
@@ -61,7 +61,7 @@
    content: '';
    display: block;
    height: 1px;
-   background-color: #ccc;
+   background-color: var(--color-border);
    margin-top: 1rem;
  }
 
@@ -76,7 +76,7 @@
  .filter-sort-panel span {
    padding: 0.3rem .6rem;
    border-radius: 20px;
-   border: 1px solid #ccc;
+   border: 1px solid var(--color-border);
  }
 
  .filter-sort-panel span:not(:first-child) {

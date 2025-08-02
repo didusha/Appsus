@@ -28,7 +28,7 @@
  }
 
  .mail-folder-list p:not(:first-child):hover {
-     background-color: #e0e0e0;
+     background-color: var(--color-hover-folder-list);
      border-radius: 0 1rem 1rem 0;
  }
 

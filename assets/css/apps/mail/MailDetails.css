@@ -5,15 +5,12 @@
    padding: 1rem;
    margin: 0 auto;
    width: 80%;
-   /* background-color: var(--color-bg--1); */
-   /* height: 100%;
-  overflow-y: auto; */
  }
 
  .toolbar {
    display: flex;
    gap: 0.75rem;
-   border-bottom: 1px solid #ddd;
+   border-bottom: 1px solid var(--color-border);
    padding-bottom: 0.5rem;
  }
 
@@ -41,7 +38,7 @@
    align-items: center;
    gap: .75rem;
    font-size: .9rem;
-   color: #555;
+   color: var(--color-border);
  }
 
  .sender-details {
@@ -51,7 +48,7 @@
 
  .sender-icon {
    width: 3rem;
-   height: 3rem;
+   height: 48px;
    background-color: #f3a4a4;
    border-radius: 50%;
    display: flex;
@@ -65,7 +62,7 @@
  .mail-body {
    margin-top: 1rem;
    font-size: 1rem;
-   border-top: 1px solid #eee;
+   border-top: 1px solid var(--color-border);
    padding: 1rem 0;
  }
 
@@ -79,5 +76,5 @@
  .mail-actions button {
    padding: 0.6rem 1.2rem;
    border-radius: 20px;
-   border: 1px solid #ccc;
+   border: 1px solid var(--color-border);
  }

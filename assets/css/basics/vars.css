@@ -1,24 +1,17 @@
 :root {
-    /* --bg1: rgb(212, 212, 212);
-    --bg2: rgb(50, 160, 204);
-    --bg3: rgb(89, 134, 206);
-    
-    --color1: rgb(26, 115, 232);
-    --color2: rgb(24, 128, 56);
-    --color3: rgb(197, 34, 31); */
-
-    /* --gray1: #aaa;
-    --gray2: #888;
-    --gray3: #626262; */
-
-
     /* mail */
-    --color-bg-1: #E9EEF6;
-    --color-bg: #fefefe;
-    --color-bg--1: #f1f5fb;
-    --color-bg--2: #f8fafd;
-    --color--bg--3: #d3e3fd;
+
+    --color-bg-2: #5f6368;              /* read mail text color */   
+    --color-bg-1: #E9EEF6;              /* filter color */
+    --color-bg: white;
+    --color-bg--1: #f1f5fb;             /* header */
+    --color-bg--2: #f8fafd;             /* side-bar &filter */
+    --color--bg--3: #d3e3fd;            /* btn active */
+
+    --color-star: #e4bb24;
+    --color-hover-li: #f5f5f5;
+    --color-hover-folder-list: #e0e0e0;
+    --color-border: #ccc;
 
     --font-size: 1rem;
-    /* --line-height: 20px; */
 }

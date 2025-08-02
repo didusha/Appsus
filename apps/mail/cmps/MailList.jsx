@@ -6,7 +6,6 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
 
     const navigate = useNavigate()
 
-
     function onClickMail(mail) {
         if (!mail.sentAt) {
             return navigate(`/mail/compose/${mail.id}`)
@@ -31,6 +30,9 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                     </span>
                     <span className={`btn-read-filter ${filterBy.sortRead === 'read' ? 'active' : ''}`}>
                         <button onClick={() => onClickedFilerRead('read')}><i className="fa-regular fa-envelope-open"></i></button>
+                    </span>
+                    <span className={`btn-read-filter ${filterBy.sortRead === 'all' ? 'active' : ''}`}>
+                        <button onClick={() => onClickedFilerRead('')}>clear</button>
                     </span>
                 </div>
                 <div>
@@ -61,10 +63,3 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
         </section>
     )
 }
-
-
-// const listAttrs = {
-//     className: 'mail-list container',
-//     title: 'Hello MailList!',
-//     onClick: () => { console.log('List Clicked!') }
-// }

@@ -5,7 +5,7 @@
     width: 25rem;
     z-index: 1;
     background-color: var(--color-bg);
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-border);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -30,7 +30,7 @@
 
 textarea {
     border: none;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--color-border);
     padding: 8px;
     margin-bottom: 10px;
     min-height: 260px;
@@ -38,7 +38,7 @@ textarea {
 
 .btn-send-mail {
     background-color: #1a73e8;
-    color: white;
+    color: var(--color-bg);
     padding: 6px 14px;
     border-radius: 4px;
 }
@@ -54,7 +54,7 @@ button:focus {
 .mail-compose .to,
 .mail-compose .from,
 .mail-compose .subject {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--color-border);
     vertical-align: middle;
     padding: 5px;
 }
