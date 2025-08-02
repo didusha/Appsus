@@ -94,6 +94,6 @@
    font-weight: bold;
  }
 
- .btn-read-filter.active{
-  background-color: var(--color--bg--3);
+ .btn-read-filter.active {
+   background-color: var(--color--bg--3);
  }
