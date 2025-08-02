@@ -14,10 +14,19 @@ export function AppHeader() {
             </h3>
         </Link>
         <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+            <NavLink to="/" >
+                <img className="logos" src="../gallery/home.svg" alt="" />
+            </NavLink>
+            <NavLink to="/about">
+                <img className="logos" src="../gallery/about.svg" alt="" />
+            </NavLink>
+            <NavLink to="/mail">
+                <img className="logos" src="../gallery/mail.svg" alt="" />
+            </NavLink>
+            <NavLink to="/note">
+                <img className="logos" src="../gallery/keep.svg" alt="" />
+            </NavLink>
         </nav>
     </header>
 }
+

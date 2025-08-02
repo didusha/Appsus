@@ -44,3 +44,13 @@ nav a.active {
 .s2 {
     color: rgb(215, 52, 52);
 }
+
+.logos {
+    height: 30px;
+    width: 30px;
+    transition: .3s;
+}
+
+.logos:hover {
+    transform: scale(1.2);
+}
