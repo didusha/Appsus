@@ -41,6 +41,14 @@ function query(filterBy = {}) {
             if (filterBy.folder === "starred") {
                 mails = mails.filter(mail => mail.isStarred && mail.removedAt === null)
             }
+
+            if (filterBy.sortField) {
+                if (filterBy.sortField === 'createdAt') {
+                    mails.sort((mail1, mail2) => (mail1[filterBy.sortField] - mail2[filterBy.sortField]) * filterBy.sortDir)
+                } else if (filterBy.sortField === 'subject') {
+                    mails.sort((mail1, mail2) => mail1.subject.localeCompare(mail2.subject) * filterBy.sortDir)
+                }
+            }
             return mails
         })
 }
@@ -464,9 +472,13 @@ function _createMails() {
 function getFilterFromSearchParams(searchParams) {
     const txt = searchParams.get('txt') || ''
     const folder = searchParams.get('folder') || 'inbox'
+    const sortField = searchParams.get('sortField') || 'createdAt'
+    const sortDir = searchParams.get('sortDir') || -1
     return {
         txt,
         folder,
+        sortField,
+        sortDir,
     }
 }
 

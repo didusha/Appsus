@@ -19,7 +19,7 @@ export function MailPreview({ mail, onStarMail }) {
             <span onClick={(ev) => {
                 ev.stopPropagation()
                 onToggleStar(mail)
-            }}>{mail.isStarred ? <i className="fa-solid fa-star"></i>: <i className="fa-regular fa-star"></i>}</span>
+            }}>{mail.isStarred ? <i className="fa-solid fa-star"></i> : <i className="fa-regular fa-star"></i>}</span>
             <span className="from">{sender}</span>
             <div className="mail-content">
                 <span className="subject">{subject}</span>

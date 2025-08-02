@@ -117,13 +117,12 @@ function debounce(func, delay) {
 
 function formatMailDate(timestamp) {
     const date = new Date(timestamp)
+    const now = new Date()
 
-    const diffInMs = new Date() - date  
-    const oneYearInMs = 1000 * 60 * 60 * 24 * 365
-    if (diffInMs > oneYearInMs) {
+    if (date.getFullYear() !== now.getFullYear()) {
         return date.getFullYear().toString()
     } else {
-        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric'})
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
     }
 }
 

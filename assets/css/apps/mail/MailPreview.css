@@ -3,6 +3,7 @@
      display: grid;
      grid-template-columns: 30px 100px 1fr 80px;
      align-items: center;
+     padding-left: .3rem;
  }
 
  .fa-star {
@@ -14,16 +15,16 @@
      font-weight: bold;
  }
 
- .subject{
-    font-weight: bold;
+ .subject {
+     font-weight: bold;
  }
 
  .mail-content {
      grid-column: 3;
  }
 
- .subject::after{
-    content: ' - ';
+ .subject::after {
+     content: ' - ';
  }
 
  .created-at {
