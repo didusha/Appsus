@@ -54,12 +54,12 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                 </div>
                 <div>
                     <span>
-                        <span className="label-text"><i class="fa-solid fa-t"></i></span>
+                        <span className="label-text"><i className="fa-solid fa-t"></i></span>
                         <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
                         <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
                     </span>
                     <span>
-                        <span className="label-text"><i class="fa-regular fa-calendar"></i></span>
+                        <span className="label-text"><i className="fa-regular fa-calendar"></i></span>
                         <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
                         <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
                     </span>
