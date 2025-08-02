@@ -30,26 +30,51 @@ export function MailDetails() {
     }
 
     if (!mail) return <div>Loading..</div>
-    // const { subject, body } = mail
     return (
         <article className='mail-details'>
+            <div className="toolbar">
+                <button onClick={() => navigate('/mail')}><i className="fa-solid fa-arrow-left-long"></i></button>
+                <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
+                <button><i className="fa-regular fa-envelope"></i></button>
+                <button><i className="fa-solid fa-pen-to-square"></i></button>
+                <button><i className="fa-solid fa-print"></i></button>
+                <button><Link to={`/mail/${mail.prevMailId}`}><i className="fa-solid fa-angle-left"></i></Link></button>
+                <button><Link to={`/mail/${mail.nextMailId}`}><i className="fa-solid fa-angle-right"></i></Link></button>
+            </div>
+
+            <div className="mail-content-layout">
+                <div className="sender-icon">S</div>
+                <div className="mail-main">
+                    <header className="mail-header">
+                        <h1> {mail.subject}</h1>
+                        <div className="mail-header-details">
+                            <span className="mail-date">{new Date(mail.sentAt).toLocaleString()}</span>
+                            <button><i className="fa-solid fa-star"></i></button>
+                            <button>↩</button>
+                            <button>⋮</button>
+                        </div>
+                    </header>
+
+                    <div className="sender-details">
+                        <p><strong>From:</strong> {mail.from}</p>
+                        <p><strong>To:</strong> {mail.to}</p>
+                    </div>
+
+                    <section className="mail-body">
+                        <p>{mail.body}</p>
+                    </section>
+                </div>
+            </div>
 
             <div className="mail-actions">
+                <button>↩ Reply</button>
+                <button>↪ Forward</button>
+            </div>
+
+            {/* <div className="mail-actions">
                 <button><Link to={`/mail/${mail.prevMailId}`}>⬅ Prev </Link></button>
                 <button><Link to={`/mail/${mail.nextMailId}`}>Next ➡ </Link></button>
-            </div>
-            <header className="mail-header">
-                <div className="mail-header-details">
-                    <h2 className="mail-subject">{mail.subject}</h2>
-                    <p className="mail-from"><strong>From:</strong> {mail.from}</p>
-                    <p className="mail-to"><strong>To:</strong> {mail.to}</p>
-                    <p className="mail-date">{new Date(mail.sentAt).toLocaleString()}</p>
-                </div>
-                <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
-            </header>
-            <section className="mail-body">
-                <p>{mail.body}</p>
-            </section>
+            </div> */}
         </article>
     )
 }

@@ -1,43 +1,83 @@
  /* mail Details  */
  .mail-details {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  /* margin: 0 10rem; */
-  margin: 0 auto;
-  width: 70%;
-  /* background-color: var(--color-bg--1); */
-}
+   display: flex;
+   flex-direction: column;
+   padding: 1rem;
+   margin: 0 auto;
+   width: 80%;
+   /* background-color: var(--color-bg--1); */
+   /* height: 100%;
+  overflow-y: auto; */
+ }
 
-.mail-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 1rem;
-}
+ .toolbar {
+   display: flex;
+   gap: 0.75rem;
+   border-bottom: 1px solid #ddd;
+   padding-bottom: 0.5rem;
+ }
 
-.mail-header-details p,
-.mail-header-details h2 {
-  margin: 0.25rem 0;
-}
+ .mail-content-layout {
+   display: flex;
+   align-items: flex-start;
+   gap: 1.25rem;
+   margin-top: 1.5rem;
+ }
 
-.mail-actions{
-    display: flex;
-    justify-content: space-between;
-}
+ .mail-main {
+   flex: 1;
+ }
 
-.mail-actions button {
-  margin-left: 0.5rem;
-  padding: 0.4rem 0.6rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
+ .mail-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: start;
+   flex-wrap: wrap;
+   margin-bottom: 1rem;
+ }
 
-.mail-body {
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  overflow-y: auto;
-  flex-grow: 1;
-}
+ .mail-header-details {
+   display: flex;
+   align-items: center;
+   gap: .75rem;
+   font-size: .9rem;
+   color: #555;
+ }
+
+ .sender-details {
+   font-size: 0.95rem;
+   margin-bottom: 1rem;
+ }
+
+ .sender-icon {
+   width: 3rem;
+   height: 3rem;
+   background-color: #f3a4a4;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-weight: bold;
+   font-size: 1.2rem;
+   flex-shrink: 0;
+ }
+
+ .mail-body {
+   margin-top: 1rem;
+   font-size: 1rem;
+   border-top: 1px solid #eee;
+   padding: 1rem 0;
+ }
+
+ .mail-actions {
+   display: flex;
+   gap: 1rem;
+   margin-top: 2rem;
+   /* justify-content: space-between; */
+ }
+
+ .mail-actions button {
+   padding: 0.6rem 1.2rem;
+   border-radius: 20px;
+   border: 1px solid #ccc;
+ }
