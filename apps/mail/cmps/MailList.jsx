@@ -37,11 +37,12 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                 </div>
                 <div>
                     <span>
-                        Subject
+                        <span className="label-text">Subject</span>
                         <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
                         <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
                     </span>
-                    <span>Date
+                    <span>
+                        <span className="label-text">Date</span>
                         <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
                         <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
                     </span>

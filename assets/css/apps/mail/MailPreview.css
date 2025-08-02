@@ -19,9 +19,9 @@
      font-weight: bold;
  }
 
- .mail-content {
+ /* .mail-content {
      grid-column: 3;
- }
+ } */
 
  .subject::after {
      content: ' - ';

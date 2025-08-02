@@ -7,7 +7,6 @@
      background-color: var(--color-bg--2);
      padding-right: 1rem;
      height: 100%;
-     overflow: hidden;
  }
 
  .mail-folder-list p:first-child {
@@ -18,8 +17,6 @@
  }
 
  .mail-folder-list p:not(:first-child) {
-
-     /* grid-template-columns: 60px 50px; */
      cursor: pointer;
      font-size: .875rem;
      padding: 5px;

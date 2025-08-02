@@ -22,7 +22,6 @@
  .mail-item.read .subject {
    font-weight: normal !important;
    color: (--color-bg-2);
-
  }
 
  .mail-item.read:hover {
@@ -31,10 +30,7 @@
 
  .mail-item .mail-content,
  .from {
-   overflow: hidden;
    white-space: nowrap;
-   text-overflow: ellipsis;
-   max-width: auto;
  }
 
  .btn-mail-preview {
@@ -77,6 +73,10 @@
    padding: 0.3rem .6rem;
    border-radius: 20px;
    border: 1px solid var(--color-border);
+ }
+
+ .filter-sort-panel .label-text{
+  border: none;
  }
 
  .filter-sort-panel span:not(:first-child) {

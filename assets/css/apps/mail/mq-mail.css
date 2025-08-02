@@ -9,7 +9,7 @@
     gap: 10px;
   }
 
-  .mail-folder-list .label-text {
+  .label-text {
     display: none;
   }
 
@@ -19,6 +19,25 @@
 
   .btn-compose-mail::before {
     margin-right: 0;
+  }
+
+  .mail-preview {
+    grid-template-columns: 30px 100px 80px;
+    grid-template-rows: auto auto;
+  }
+
+  .mail-content {
+    grid-column: 1 /-1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .mail-content .subject,
+  .mail-content .body {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -34,6 +53,20 @@
   }
 
   .mail-folder-list .label-text {
-    display: block;
+    display: inherit;
+  }
+
+  .mail-preview {
+    grid-template-columns: 30px 100px 1fr 80px;
+  }
+
+  .mail-content {
+    grid-column: 3;
+  }
+
+  .mail-item .mail-content,
+  .from {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
