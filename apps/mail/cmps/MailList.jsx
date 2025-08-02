@@ -72,9 +72,9 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                             <MailPreview mail={mail} onStarMail={onStarMail} />
                         </div>
                         <div className="btn-mail-preview">
+                            <button onClick={() => mailToNote(mail.body)}><i className="fa-solid fa-note-sticky"></i></button>
                             <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
                             <button onClick={() => onToggleMail(mail)}>{mail.isRead ? <i className="fa-regular fa-envelope-open"></i> : <i className="fa-regular fa-envelope"></i>}</button>
-                            <button onClick={() => mailToNote(mail.body)}><i className="fa-solid fa-note-sticky"></i></button>
                         </div>
                     </li>
                 ))}

@@ -115,19 +115,6 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 from: 'user@appsus.com',
-                to: 'alice@example.com',
-                subject: 'Welcome to our platform!',
-                body: 'Thanks for signing up. We’re excited to have you on board. Feel free to explore and let us know if you have any questions about the features or interface.',
-                sentAt: 1722465600000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722462000000,
-                isStarred: true,
-                folder: 'sent'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
                 to: 'bob@example.net',
                 subject: 'Project Update',
                 body: 'The project is progressing well. We’ve completed the initial phase and are moving into the review stage. Feedback is appreciated before we finalize everything.',
@@ -137,19 +124,6 @@ function _createMails() {
                 createdAt: 1722448800000,
                 isStarred: false,
                 folder: 'draft'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
-                to: 'claire@example.org',
-                subject: 'Weekly Summary',
-                body: 'Here’s a quick summary of this week’s work: new UI prototypes were created, several bugs were resolved, and we’re on track for the next sprint.',
-                sentAt: 1722445000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722443000000,
-                isStarred: false,
-                folder: 'sent'
             },
             {
                 id: utilService.makeId(),
@@ -206,19 +180,6 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 from: 'user@appsus.com',
-                to: 'harry@example.net',
-                subject: 'Request for Feedback',
-                body: 'We’d appreciate your feedback on the latest dashboard design. What do you like, dislike, or wish was there? Your input really helps.',
-                sentAt: 1722335000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722334000000,
-                isStarred: true,
-                folder: 'sent'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
                 to: 'isabelle@example.org',
                 subject: 'Job Offer Update',
                 body: 'Following our recent discussions, we’re happy to extend an updated job offer with revised terms. Please review and let us know your decision.',
@@ -226,19 +187,6 @@ function _createMails() {
                 draftAt: null,
                 removedAt: null,
                 createdAt: 1722298000000,
-                isStarred: false,
-                folder: 'inbox'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
-                to: 'james@example.com',
-                subject: 'Server Maintenance Notice',
-                body: 'We’ll be performing routine server maintenance this weekend. Expect some downtime from 2 AM to 5 AM Sunday. Let us know if you have concerns.',
-                sentAt: 1722280000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722278000000,
                 isStarred: false,
                 folder: 'inbox'
             },
@@ -284,19 +232,6 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 from: 'user@appsus.com',
-                to: 'nathan@example.net',
-                subject: 'Support Request Update',
-                body: 'We’ve reviewed your support ticket and determined it was a configuration issue. We’ve corrected it and everything should be running fine now.',
-                sentAt: 1722210000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722208000000,
-                isStarred: true,
-                folder: 'sent'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
                 to: 'olivia@example.org',
                 subject: 'Meeting Agenda - Next Week',
                 body: 'Attached is the proposed agenda for next week’s meeting. Feel free to suggest edits or bring new topics to include on the discussion list.',
@@ -310,32 +245,6 @@ function _createMails() {
             {
                 id: utilService.makeId(),
                 from: 'user@appsus.com',
-                to: 'peter@example.com',
-                subject: 'Deleted: Brainstorm Notes',
-                body: 'Just some early brainstorm notes I wrote down. Might not be important, but wanted to share them in case something useful stands out.',
-                sentAt: null,
-                draftAt: null,
-                removedAt: 1722178000000,
-                createdAt: 1722176000000,
-                isStarred: false,
-                folder: 'trash'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
-                to: 'quinn@example.net',
-                subject: 'Follow-Up from Demo',
-                body: 'Thanks for joining the product demo today. Let me know if you have more questions, or want a follow-up walkthrough of any specific feature.',
-                sentAt: 1722160000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722158000000,
-                isStarred: true,
-                folder: 'sent'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
                 to: 'rachel@example.org',
                 subject: 'Team Building Activity Ideas',
                 body: 'Looking for input on fun team building activities. Let’s come up with something outdoors, engaging, and inclusive for all teams involved.',
@@ -345,32 +254,6 @@ function _createMails() {
                 createdAt: 1722138000000,
                 isStarred: false,
                 folder: 'draft'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
-                to: 'steve@example.com',
-                subject: 'Customer Survey Results',
-                body: 'We’ve compiled the results of the recent customer survey. Key takeaways include improved satisfaction with onboarding and feature documentation.',
-                sentAt: 1722120000000,
-                draftAt: null,
-                removedAt: null,
-                createdAt: 1722118000000,
-                isStarred: true,
-                folder: 'sent'
-            },
-            {
-                id: utilService.makeId(),
-                from: 'user@appsus.com',
-                to: 'tina@example.net',
-                subject: 'Cancelled: Marketing Sync',
-                body: 'The marketing sync originally planned for this Thursday has been cancelled due to scheduling conflicts. We’ll reschedule for next week.',
-                sentAt: null,
-                draftAt: null,
-                removedAt: 1722100000000,
-                createdAt: 1722098000000,
-                isStarred: false,
-                folder: 'trash'
             },
             {
                 id: utilService.makeId(),
