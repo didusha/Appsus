@@ -94,9 +94,11 @@ export function MailIndex() {
     if (!mails) return <div className="loader">Loading...</div>
     return (
         <section className="mail-index">
+
             <MailFolderList className="side-nav" unReadMails={unReadMails} onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
             <div>
                 <MailFilter onSetFilterBy={onSetFilterBy} filterBy={filterBy} />
+                
                 <MailList
                     onRemoveMail={onRemoveMail}
                     onReadMail={onReadMail}
