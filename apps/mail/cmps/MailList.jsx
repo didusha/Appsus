@@ -42,7 +42,7 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                         <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
                     </span>
                     <span>
-                        <span className="label-text">Date</span>
+                        <span className="label-text"><i class="fa-regular fa-calendar"></i></span>
                         <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
                         <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
                     </span>
