@@ -13,11 +13,70 @@
     .add-types {
         grid-row: 2;
     }
+
+    .home-logo span {
+        font-size: 4em;
+    }
+
+    .home-txt {
+        width: 18em;
+    }
+
+    .hamburger {
+        position: relative;
+        display: block;
+    }
+
+    .hamburger:hover {
+        cursor: pointer;
+    }
+
+    .nav-logos {
+        display: none;
+    }
+
+    .open {
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--color-bg--1);
+        padding-inline: 8px;
+        z-index: 10;
+    }
+
+    .about-page {
+        margin: 0 auto;
+        line-height: 1.3;
+        text-align: center;
+    }
 }
 
 @media (min-width: 600px) {
     .btns-add {
         grid-row: 1;
         justify-self: end;
+    }
+
+    .home-logo span {
+        font-size: 7em;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .nav-logos {
+        display: block;
+    }
+
+    .home-txt {
+        width: 30em;
+    }
+
+    .about-page {
+        margin: 80px auto;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        line-height: 1.7;
     }
 }
