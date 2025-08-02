@@ -2,7 +2,6 @@ import { MailPreview } from "../cmps/MailPreview.jsx"
 import { noteService } from "../../note/services/note.service.js"
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 
-
 const { useNavigate } = ReactRouterDOM
 
 export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClickedSortByDate, onClickedSortBySubject, onClickedFilerRead, filterBy }) {

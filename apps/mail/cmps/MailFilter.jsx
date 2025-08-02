@@ -31,11 +31,7 @@ export function MailFilter({ filterBy, onSetFilterBy }) {
     return (
         <section className="mail-filter">
             <form>
-                {/* <label htmlFor="txt">Subject</label> */}
                 <input className="serach-input" onChange={handleChange} value={txt} name="txt" type="text" placeholder="Search mail"/>
-
-                {/* <label htmlFor="minSpeed">Min Speed</label>
-                <input onChange={handleChange} value={minSpeed || ''} name="minSpeed" id="minSpeed" type="number" /> */}
             </form>
         </section>
     )

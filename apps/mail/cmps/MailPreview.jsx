@@ -15,7 +15,6 @@ export function MailPreview({ mail, onStarMail }) {
 
     return (
         <div className="mail-preview">
-            {/* <input type="checkbox" ></input> */}
             <span onClick={(ev) => {
                 ev.stopPropagation()
                 onToggleStar(mail)
