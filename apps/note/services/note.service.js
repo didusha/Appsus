@@ -15,7 +15,6 @@ export const noteService = {
     createVideoNote,
     getDefaultFilter,
     getFilterFromSearchParams,
-    onMailToNote
 }
 
 function query(filterBy = {}) {
@@ -218,6 +217,3 @@ function _setNextPrevNoteId(note) {
     })
 }
 
-function onMailToNote(mail){
-    console.log(mail);
-}
