@@ -6,15 +6,13 @@ import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.servic
 import { NoteAdd } from "../cmps/NoteAdd.jsx";
 import { utilService } from "../../../services/util.service.js"
 
-
-
 const { useState, useEffect } = React
 const { useSearchParams } = ReactRouterDOM
-
-
+const { useNavigate } = ReactRouterDOM
 
 export function NoteIndex() {
-
+    
+    const navigate = useNavigate()
     const [notes, setNotes] = useState(null)
     const [isAdding, setIsAdding] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams()
@@ -50,6 +48,10 @@ export function NoteIndex() {
         newNote.id = null
         noteService.save(newNote)
             .then(() => loadNotes(filterBy))
+    }
+
+    function onNoteToMail(txt){
+        navigate(`/mail/compose?body=${txt}`)
     }
 
     function onTogglePin(pinNote) {
@@ -96,7 +98,8 @@ export function NoteIndex() {
                     onSaveColor={onSaveColor}
                     onTogglePin={onTogglePin}
                     onDuplicateNote={onDuplicateNote}
-                    onUpdateNote={onUpdateNote} />
+                    onUpdateNote={onUpdateNote}
+                    onNoteToMail={onNoteToMail} />
             </div>
         </section>
     )
