@@ -1,4 +1,5 @@
 import { MailPreview } from "../cmps/MailPreview.jsx"
+import { NoteService } from "../../note/services/note.service.js"
 
 const { useNavigate } = ReactRouterDOM
 
@@ -57,6 +58,7 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                         <div className="btn-mail-preview">
                             <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
                             <button onClick={() => onToggleMail(mail)}>{mail.isRead ? <i className="fa-regular fa-envelope-open"></i> : <i className="fa-regular fa-envelope"></i>}</button>
+                            <button onClick={() => NoteService.onMailToNote(mail)}></button>
                         </div>
                     </li>
                 ))}
