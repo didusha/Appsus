@@ -1,0 +1,23 @@
+@media (max-width: 600px) {
+    .btns-add {
+        grid-row: 2;
+        justify-self: start;
+
+    }
+
+    .note-add button {
+        grid-row: 2;
+        align-self: end;
+    }
+
+    .add-types {
+        grid-row: 2;
+    }
+}
+
+@media (min-width: 600px) {
+    .btns-add {
+        grid-row: 1;
+        justify-self: end;
+    }
+}

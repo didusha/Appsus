@@ -2,7 +2,8 @@
 @import './basics/vars.css';
 @import './basics/base.css';
 @import './basics/helpers.css';
-@import './basics/layout.css';
+@import './basics/mq.css';
+
 
 /* Components */
 @import './cmps/Home.css';

@@ -1,7 +1,7 @@
 import { showSuccessMsg } from '../services/event-bus.service.js'
 
 export function Home() {
-    return <section className="container home">
+    return <section className="home">
             <h3 className="home-logo">
                 <span className="a">A</span>
                 <span className="p1">p</span>
