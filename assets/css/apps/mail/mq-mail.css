@@ -1,0 +1,39 @@
+/* Mobile*/
+@media (max-width: 600px) {
+  .mail-index {
+    grid-template-columns: 80px 1fr;
+  }
+
+  .mail-folder-list p:not(:first-child) {
+    display: flex;
+    gap: 10px;
+  }
+
+  .mail-folder-list .label-text {
+    display: none;
+  }
+
+  .mail-folder-list p:first-child {
+    padding: 1rem;
+  }
+
+  .btn-compose-mail::before {
+    margin-right: 0;
+  }
+}
+
+/* Screens */
+@media (min-width: 600px) {
+  .mail-index {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .mail-folder-list p:not(:first-child) {
+    display: grid;
+    grid-template-columns: 60px 1fr 50px;
+  }
+
+  .mail-folder-list .label-text {
+    display: block;
+  }
+}

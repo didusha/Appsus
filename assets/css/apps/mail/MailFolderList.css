@@ -18,10 +18,10 @@
  }
 
  .mail-folder-list p:not(:first-child) {
-     display: grid;
-     grid-template-columns: 60px 1fr 50px;
+
+     /* grid-template-columns: 60px 50px; */
      cursor: pointer;
-     font-size: 14px;
+     font-size: .875rem;
      padding: 5px;
      width: 100%;
      margin-block: 7px;
@@ -51,7 +51,7 @@
      margin-left: 1.5rem;
  }
 
- .mail-folder-list span {
+ .mail-folder-list span:nth-child(3) {
      place-self: end;
  }
 
