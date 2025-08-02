@@ -26,7 +26,7 @@ function query(filterBy = {}) {
             }
             if (filterBy.folder === "inbox") {
                 mails = mails.filter(mail => mail.to === loggedinUser.email &&
-                    mail.removedAt === null &&
+                    mail.removedAt === null && !mail.isDraft &&
                     mail.from !== loggedinUser.email)
             }
             else if (filterBy.folder === "sent") {

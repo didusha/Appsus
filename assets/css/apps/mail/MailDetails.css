@@ -38,7 +38,7 @@
    align-items: center;
    gap: .75rem;
    font-size: .9rem;
-   color: var(--color-border);
+   color: var(--color-bg-2);
  }
 
  .sender-details {

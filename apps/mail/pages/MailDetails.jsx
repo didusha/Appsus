@@ -20,10 +20,6 @@ export function MailDetails() {
             .catch(err => console.log('err:', err))
     }
 
-    function onBack() {
-        navigate('/mail')
-    }
-
     function onRemoveMail(mailId) {
         mailService.remove(mailId)
             .then(() => navigate('/mail'))
@@ -35,7 +31,7 @@ export function MailDetails() {
             <div className="toolbar">
                 <button onClick={() => navigate('/mail')}><i className="fa-solid fa-arrow-left-long"></i></button>
                 <button onClick={() => onRemoveMail(mail.id)}><i className="fa-solid fa-trash-can"></i></button>
-                <button><i className="fa-regular fa-envelope"></i></button>
+                <button><i className="fa-regular fa-envelope-open"></i></button>
                 <button><i className="fa-solid fa-pen-to-square"></i></button>
                 <button><i className="fa-solid fa-print"></i></button>
                 <button><Link to={`/mail/${mail.prevMailId}`}><i className="fa-solid fa-angle-left"></i></Link></button>
@@ -70,11 +66,6 @@ export function MailDetails() {
                 <button>↩ Reply</button>
                 <button>↪ Forward</button>
             </div>
-
-            {/* <div className="mail-actions">
-                <button><Link to={`/mail/${mail.prevMailId}`}>⬅ Prev </Link></button>
-                <button><Link to={`/mail/${mail.nextMailId}`}>Next ➡ </Link></button>
-            </div> */}
         </article>
     )
 }

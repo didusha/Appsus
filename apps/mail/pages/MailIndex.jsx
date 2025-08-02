@@ -51,7 +51,7 @@ export function MailIndex() {
         setFilterBy({ ...filterByToEdit })
     }
 
-    function onClickedFilerRead(folderVal){
+    function onClickedFilerRead(folderVal) {
         setFilterBy(prevFilter => ({ ...prevFilter, sortRead: folderVal }))
     }
 
@@ -63,10 +63,8 @@ export function MailIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, sortField: SortVal, sortDir: SortDirVal }))
     }
 
-    function sentMail(newMail) {
-        const idx = mails.findIndex(mail => mail.id === newMail.id)
-        if (idx !== -1) loadMails()
-        else setMails(prevMails => [...prevMails, newMail])
+    function sentMail() {
+        loadMails()
     }
 
     function onReadMail(mailId, isRead) {
@@ -108,7 +106,7 @@ export function MailIndex() {
                     onClickedSortBySubject={onClickedSortBySubject}
                     onClickedFilerRead={onClickedFilerRead}
                     filterBy={filterBy}
-                    />
+                />
                 <Outlet context={{ sentMail }} />
             </div>
         </section>

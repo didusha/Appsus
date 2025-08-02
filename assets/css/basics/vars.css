@@ -8,10 +8,11 @@
     --color-bg--2: #f8fafd;             /* side-bar &filter */
     --color--bg--3: #d3e3fd;            /* btn active */
 
-    --color-star: #e4bb24;
     --color-hover-li: #f5f5f5;
     --color-hover-folder-list: #e0e0e0;
     --color-border: #ccc;
+    
+    --color-star: #e4bb24;
 
     --font-size: 1rem;
 }
