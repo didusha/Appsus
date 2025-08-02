@@ -2,7 +2,7 @@ import { MailPreview } from "../cmps/MailPreview.jsx"
 
 const { useNavigate } = ReactRouterDOM
 
-export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClickedSortByDate, onClickedSortBySubject }) {
+export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClickedSortByDate, onClickedSortBySubject, onClickedFilerRead, filterBy }) {
 
     const navigate = useNavigate()
 
@@ -25,15 +25,25 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
     return (
         <section className='mail-list'>
             <div className="filter-sort-panel">
-                <span>
-                    Subject
-                    <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
-                    <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
-                </span>
-                <span>Date
-                    <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
-                    <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
-                </span>
+                <div>
+                    <span className={`btn-read-filter ${filterBy.sortRead === 'unRead' ? 'active' : ''}`}>
+                        <button onClick={() => onClickedFilerRead('unRead')}><i className="fa-regular fa-envelope"></i></button>
+                    </span>
+                    <span className={`btn-read-filter ${filterBy.sortRead === 'read' ? 'active' : ''}`}>
+                        <button onClick={() => onClickedFilerRead('read')}><i className="fa-regular fa-envelope-open"></i></button>
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Subject
+                        <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
+                        <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
+                    </span>
+                    <span>Date
+                        <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
+                        <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
+                    </span>
+                </div>
             </div>
             <ul>
                 {mails.map(mail => (

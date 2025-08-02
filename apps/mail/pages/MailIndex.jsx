@@ -17,7 +17,6 @@ export function MailIndex() {
     const [unReadMails, setUnReadMails] = useState(null)
     const [searchParams, setSearchParams] = useSearchParams()
     const [filterBy, setFilterBy] = useState(mailService.getFilterFromSearchParams(searchParams))
-    console.log("🚀 ~ MailIndex ~ filterBy:", filterBy)
 
     useEffect(() => {
         setSearchParams(utilService.getTruthyValues(filterBy))
@@ -50,6 +49,10 @@ export function MailIndex() {
 
     function onSetFilterBy(filterByToEdit) {
         setFilterBy({ ...filterByToEdit })
+    }
+
+    function onClickedFilerRead(folderVal){
+        setFilterBy(prevFilter => ({ ...prevFilter, sortRead: folderVal }))
     }
 
     function onClickedSortByDate(SortVal, SortDirVal) {
@@ -102,7 +105,10 @@ export function MailIndex() {
                     mails={mails}
                     onStarMail={onStarMail}
                     onClickedSortByDate={onClickedSortByDate}
-                    onClickedSortBySubject={onClickedSortBySubject} />
+                    onClickedSortBySubject={onClickedSortBySubject}
+                    onClickedFilerRead={onClickedFilerRead}
+                    filterBy={filterBy}
+                    />
                 <Outlet context={{ sentMail }} />
             </div>
         </section>

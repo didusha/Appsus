@@ -66,20 +66,34 @@
  }
 
  .filter-sort-panel {
-   margin-right: .9rem;
    font-size: .8rem;
    display: flex;
-   justify-content: end;
-   padding: 7px;
+   justify-content: space-between;
+   padding: 10px;
+   font-weight: bold;
  }
 
  .filter-sort-panel span {
-  font-weight: bold;
-   margin-left: 1rem;
+   padding: 0.3rem .6rem;
+   border-radius: 20px;
+   border: 1px solid #ccc;
+ }
+
+ .filter-sort-panel span:not(:first-child) {
+   margin-left: .5rem;
  }
 
  .filter-sort-panel button {
    margin-inline: 0;
    padding-inline: 0;
    margin-left: 2px;
+ }
+
+ .filter-sort-panel button:hover {
+   scale: 1.1;
+   font-weight: bold;
+ }
+
+ .btn-read-filter.active{
+  background-color: var(--color--bg--3);
  }
