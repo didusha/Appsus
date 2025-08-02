@@ -80,7 +80,6 @@ export function NoteIndex() {
         setFilterBy({ ...filterByToEdit })
     }
 
-
     if (!notes) return <div>loading...</div>
     return (
         <section className="notes-index">
