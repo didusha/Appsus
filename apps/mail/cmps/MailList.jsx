@@ -37,7 +37,7 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClicke
                 </div>
                 <div>
                     <span>
-                        <span className="label-text">Subject</span>
+                        <span className="label-text"><i class="fa-solid fa-t"></i></span>
                         <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
                         <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
                     </span>
