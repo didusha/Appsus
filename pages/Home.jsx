@@ -13,13 +13,13 @@ export function Home() {
         <input className="home-txt" type="text" placeholder="Search..." />
         <nav>
             <NavLink to="/about">
-                <img className="home-logos" src="../gallery/about.svg" alt="" />
+                <img className="home-logos" src="../gallery/about.png" alt="" />
             </NavLink>
             <NavLink to="/mail">
-                <img className="home-logos" src="../gallery/mail.svg" alt="" />
+                <img className="home-logos" src="../gallery/gmail.png" alt="" />
             </NavLink>
             <NavLink to="/note">
-                <img className="home-logos" src="../gallery/keep.svg" alt="" />
+                <img className="home-logos" src="../gallery/keep.png" alt="" />
             </NavLink>
         </nav>
 

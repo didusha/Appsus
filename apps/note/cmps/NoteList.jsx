@@ -5,7 +5,7 @@ import { NoteVideoPreview } from "./NoteVideoPreview.jsx"
 import { NoteColor } from "./NoteColor.jsx"
 const { useState } = React
 
-export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin, onDuplicateNote, onUpdateNote }) {
+export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin, onDuplicateNote, onUpdateNote, onNoteToMail }) {
     const [openColorPickerId, setOpenColorPickerId] = useState(null)
 
     return (
@@ -35,6 +35,9 @@ export function NoteList({ notes, onRemoveNote, onSaveColor, onTogglePin, onDupl
 
                             <button onClick={() => onRemoveNote(note.id)}>
                                 <i className="fa-solid fa-trash-can"></i>
+                            </button>
+                            <button onClick={() => onNoteToMail(note.info.txt)}>
+                                <i className="fa-solid fa-paper-plane"></i>
                             </button>
                                 {openColorPickerId === note.id && (
                                     <NoteColor note={note} onSaveColor={onSaveColor} />
