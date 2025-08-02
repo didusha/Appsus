@@ -29,7 +29,8 @@
    background-color: #f5f5f5;
  }
 
- .mail-item .mail-content, .from {
+ .mail-item .mail-content,
+ .from {
    overflow: hidden;
    white-space: nowrap;
    text-overflow: ellipsis;
@@ -62,4 +63,23 @@
    height: 1px;
    background-color: #ccc;
    margin-top: 1rem;
+ }
+
+ .filter-sort-panel {
+   margin-right: .9rem;
+   font-size: .8rem;
+   display: flex;
+   justify-content: end;
+   padding: 7px;
+ }
+
+ .filter-sort-panel span {
+  font-weight: bold;
+   margin-left: 1rem;
+ }
+
+ .filter-sort-panel button {
+   margin-inline: 0;
+   padding-inline: 0;
+   margin-left: 2px;
  }

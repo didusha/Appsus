@@ -2,13 +2,13 @@ import { MailPreview } from "../cmps/MailPreview.jsx"
 
 const { useNavigate } = ReactRouterDOM
 
-export function MailList({ mails, onRemoveMail, onReadMail, onStarMail }) {
+export function MailList({ mails, onRemoveMail, onReadMail, onStarMail, onClickedSortByDate, onClickedSortBySubject }) {
 
     const navigate = useNavigate()
 
 
     function onClickMail(mail) {
-        if(!mail.sentAt){
+        if (!mail.sentAt) {
             return navigate(`/mail/compose/${mail.id}`)
         }
         navigate(`/mail/${mail.id}`)
@@ -24,10 +24,21 @@ export function MailList({ mails, onRemoveMail, onReadMail, onStarMail }) {
     if (!mails.length) return <div className="no-mail-found">No messages matched your search. Try other options.</div>
     return (
         <section className='mail-list'>
+            <div className="filter-sort-panel">
+                <span>
+                    Subject
+                    <button onClick={() => onClickedSortBySubject('subject', 1)}>↑</button>
+                    <button onClick={() => onClickedSortBySubject('subject', -1)}>↓</button>
+                </span>
+                <span>Date
+                    <button onClick={() => onClickedSortByDate('createdAt', 1)}>↑</button>
+                    <button onClick={() => onClickedSortByDate('createdAt', -1)}>↓</button>
+                </span>
+            </div>
             <ul>
                 {mails.map(mail => (
                     <li key={mail.id} className={`mail-item ${mail.isRead ? 'read' : ''}`} >
-                        <div  onClick={() => onClickMail(mail)}>
+                        <div onClick={() => onClickMail(mail)}>
                             <MailPreview mail={mail} onStarMail={onStarMail} />
                         </div>
                         <div className="btn-mail-preview">
