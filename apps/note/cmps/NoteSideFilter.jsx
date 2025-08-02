@@ -52,10 +52,10 @@ export function NoteSideFilter({ filterBy, onSetFilterBy, notes }) {
                 <i className="fa-solid fa-list"></i>
             </button>
             <button onClick={() => handleTypeChange('NoteVideo')}>
-                <i class="fa-solid fa-video"></i>
+                <i className="fa-solid fa-video"></i>
             </button>
             <button onClick={onShowAllNotes}>
-                <i class="fa-solid fa-xmark"></i>
+                <i className="fa-solid fa-xmark"></i>
             </button>
         </section>
     )

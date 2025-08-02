@@ -8,7 +8,7 @@ export function NoteVideoPreview({ note }) {
     return (
         <article className="note-img-preview">
             <h4 className="Video-title" onClick={() => setIsNoteEdit(true)}>{noteText}</h4>
-            <iframe src="https://www.youtube.com/embed/Wq4MJ_-MpN4">
+            <iframe src={note.info.url}>
             </iframe>
             {isNoteEdit && (
                 <NoteEdit setIsNoteEdit={setIsNoteEdit} noteText={noteText} setNoteText={setNoteText} />
