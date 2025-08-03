@@ -57,7 +57,7 @@ export function MailDetails() {
                     </div>
 
                     <section className="mail-body">
-                        <p>{mail.body}</p>
+                        <pre>{mail.body}</pre>
                     </section>
                 </div>
             </div>
