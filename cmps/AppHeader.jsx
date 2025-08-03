@@ -17,7 +17,7 @@ export function AppHeader() {
         </Link>
         <div>
         <div className="hamburger">
-            <img className="logos" onClick={() => setIsOpen(!isOpen)} src="../gallery/hamburger.svg" alt="" />
+            <img className="logos" onClick={() => setIsOpen(!isOpen)} src="gallery/hamburger.svg" alt="" />
         </div>
         <nav className={`nav-logos ${isOpen ? 'open' : ''}`}>
             <NavLink to="/" >
