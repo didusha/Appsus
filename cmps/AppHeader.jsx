@@ -21,16 +21,16 @@ export function AppHeader() {
         </div>
         <nav className={`nav-logos ${isOpen ? 'open' : ''}`}>
             <NavLink to="/" >
-                <img className="logos" src="../gallery/home.png" alt="" />
+                <img className="logos" src="gallery/home.png" alt="" />
             </NavLink>
             <NavLink to="/about">
-                <img className="logos" src="../gallery/about.png" alt="" />
+                <img className="logos" src="gallery/about.png" alt="" />
             </NavLink>
             <NavLink to="/mail">
-                <img className="logos" src="../gallery/gmail.png" alt="" />
+                <img className="logos" src="gallery/gmail.png" alt="" />
             </NavLink>
             <NavLink to="/note">
-                <img className="logos" src="../gallery/keep.png" alt="" />
+                <img className="logos" src="gallery/keep.png" alt="" />
             </NavLink>
         </nav>
         </div>
